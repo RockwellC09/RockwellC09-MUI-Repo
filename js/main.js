@@ -175,8 +175,9 @@ window.addEventListener("DOMContentLoaded", function(){
         var getVal = obj.amountSaved[1].replace(/\$/g,'');
         var getMax = obj.cost[1].replace(/\$/g,'');
         var percent = (getVal * 100) / getMax;
+        var percentRound = Math.round(percent * 10) / 10;
         var prog = document.createElement('li');
-        prog.innerHTML = "<strong>Progress: </strong><progress max="+ getMax +" value="+ getVal +"></progress> " + percent + "%"
+        prog.innerHTML = "<strong>Progress: </strong><progress max="+ getMax +" value="+ getVal +"></progress> " + percentRound + "%"
         makeSubList.appendChild(prog);
         
     }
