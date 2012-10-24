@@ -74,7 +74,7 @@ Visual Frameworks 1210
 					<legend>Commitment Info:</legend>
 					
 					<label for="pledge">Pledge Date:</label><br>
-					<input type="date" id="pledge" name="pledge" placeholder="mm/dd/yyyy" /> <br><br>
+					<input type="date" id="pledge" name="pledge" placeholder="yyyy-mm-dd" /> <br><br>
 					
 					<label for="priority">Priority:</label><br>
 					<input type="radio" id="priority1" name="priority" value="Low!" checked="checked"/> Low<br>
@@ -118,7 +118,10 @@ Visual Frameworks 1210
 <script>
 if (datefield.type!="date"){ //if browser doesn't support input type="date", initialize date picker widget:
     jQuery(function($){ //on document.ready
-        $('#pledge').datepicker();
+	var pickerOpts = {
+		dateFormat:"yy-mm-dd"
+    };
+        $('#pledge').datepicker(pickerOpts);
     })
 }
 </script>
