@@ -132,7 +132,7 @@ window.addEventListener("DOMContentLoaded", function(){
         
         toggleControls("on");
         
-        title.innerHTML = "<h1>WishList LayAway</h1>";
+        title.innerHTML = "<a href=\"index.html\"><h1>Your WishList</h1></a>";
         var makeDiv = document.createElement('div');
         makeDiv.setAttribute("id", "items");
         var makeList = document.createElement('ul');
@@ -351,6 +351,11 @@ window.addEventListener("DOMContentLoaded", function(){
         }
     }
     
+    //function home() {
+    //    var url = document.URL;
+    //    var homeLink = url.replace("additem.html", "index.html");
+    //    window.open(homeLink,"_self")
+    //}
     
     // set link and click events
     var displayLink = $('displayLink');
@@ -359,6 +364,9 @@ window.addEventListener("DOMContentLoaded", function(){
     clearLink.addEventListener("click", clearData);
     var save = $('submit');
     save.addEventListener("click", validate);
-    
+    //var add = $('add');
+    //add.addEventListener("click", home);
+    //var add2 = $('add2');
+    //add2.addEventListener("click", home);
 });
 
