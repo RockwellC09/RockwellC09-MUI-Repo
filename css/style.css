@@ -46,7 +46,7 @@ h1      {
 
 #bgSearch {
     background: #0d726f;
-    width: 200px;
+    width: 150px;
     margin: -10px auto 0px auto;
     padding: 10px;
     -moz-box-shadow: inset .5px .5px 3px .5px #000;
@@ -58,7 +58,7 @@ h1      {
 }
 
  #bgSearch input {
-    border: 3px solid #528786;
+    border: 2px solid #528786;
     background: #292929;
     color: white;
     text-align: center;
@@ -73,6 +73,38 @@ h1      {
 
 #add-item input:focus {
     outline-color: white;
+}
+
+#cat1, #cat2, #cat3, #cat4 {
+    background: #292929;
+    font-weight: bold;
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 22px;
+    width: 320px;
+    height: 50px;
+    text-align: center;
+    margin: 3px auto 0px auto;
+    color: white;
+}
+
+#cat1Bg, #cat2Bg, #cat3Bg, #cat4Bg {
+    padding-top: 10px;
+}
+
+#subCat1, #subCat2, #subCat3, #subCat1-2, #subCat2-2, #subCat3-2,
+#subCat1-3, #subCat2-3, #subCat3-3, #subCat4-3, #subCat1-4, #subCat2-4, #subCat3-4, #subCat4-4
+{
+    background: #0d726f;
+    width: 310px;
+    height: 50px;
+    text-align: center;
+    margin:5px;
+    display: none;
+    font-size: 20px;
+}
+
+#subCatsBg {
+    padding-top: 10px;
 }
 
 p   {

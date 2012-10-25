@@ -1,6 +1,7 @@
-// Christopher Rockwell
-// Project: Web App Part 4
-// Visual Frameworks 1210
+//Christopher Rockwell
+//Project 1
+//MiU 1211
+
 
 // Wait until DOM is ready
 window.addEventListener("DOMContentLoaded", function(){
