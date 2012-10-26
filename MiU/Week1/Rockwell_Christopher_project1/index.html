@@ -1,0 +1,93 @@
+<!doctype html>
+<!--
+Christopher Rockwell
+Project 1
+MiU 1211
+ -->
+<html>
+	<head>
+	
+		<!--Meta Tags-->
+		<meta charset="utf-8" />
+		<meta name ="description" content="A mobile app for making goals to purchase your wishlist item(s)?" />
+		<meta name="keywords" content="iphone app, wishlist, online shopping, mobile" />
+		
+		<!-- Tell the robots to index-->
+		<meta name="robots" content="index, follow" />
+		
+		<!--Condition content for mobile browsers-->
+		<meta name="viewport" content="user-scalable=no, width=device-width" />
+		
+		<!--Page Title-->
+		<title>WishList LayAway</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="css/iphone.css" type="text/css" />
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+	</head>
+	<body>
+	
+		<header>
+			<h1>WishList LayAway</h1>
+		</header>
+		
+		<div id="home-container">
+			<a href="additem.html"><img src="images/feature.png" width="320px" height="100%"></a><br>
+			<div id=bgSearch>
+				<input type="text" id="search" name="search" placeholder="search"/>
+			</div>
+			
+			<div id="cat1"><div id="cat1Bg">Browse by Priority</div></div>
+			<script>
+			$("#cat1").click(function () {
+			  $("#subCat1").slideToggle("slow");
+			  $("#subCat2").slideToggle("slow");
+			  $("#subCat3").slideToggle("slow");
+			});
+			</script>
+			<div id="subCat1"><div id="subCatsBg"><a href="404.html">Low</a></div></div>
+			<div id="subCat2"><div id="subCatsBg"><a href="404.html">Medium</a></div></div>
+			<div id="subCat3"><div id="subCatsBg"><a href="404.html">High</a></div></div>
+			
+			<div id="cat2"><div id="cat2Bg">Browse by Item Cost</div></div>
+			<script>
+			$("#cat2").click(function () {
+			  $("#subCat1-2").slideToggle("slow");
+			  $("#subCat2-2").slideToggle("slow");
+			  $("#subCat3-2").slideToggle("slow");
+			});
+			</script>
+			<div id="subCat1-2"><div id="subCatsBg"><a href="404.html">Under $500</a></div></div>
+			<div id="subCat2-2"><div id="subCatsBg"><a href="404.html">$500 - $1000</a></div></div>
+			<div id="subCat3-2"><div id="subCatsBg"><a href="404.html">Over $1000</a></div></div>
+			
+			<div id="cat3"><div id="cat3Bg">Browse by Time Frame</div></div>
+			<script>
+			$("#cat3").click(function () {
+			  $("#subCat1-3").slideToggle("slow");
+			  $("#subCat2-3").slideToggle("slow");
+			  $("#subCat3-3").slideToggle("slow");
+			  $("#subCat4-3").slideToggle("slow");
+			});
+			</script>
+			<div id="subCat1-3"><div id="subCatsBg"><a href="#">0-6 months</a></div></div>
+			<div id="subCat2-3"><div id="subCatsBg"><a href="#">6 months to a year</a></div></div>
+			<div id="subCat3-3"><div id="subCatsBg"><a href="#">Between 1-3 years</a></div></div>
+			<div id="subCat4-3"><div id="subCatsBg"><a href="#">More than 3 years</a></div></div>
+
+			
+			<div id="cat4"><div id="cat2Bg">Browse by Progress</div></div>
+			<script>
+			$("#cat4").click(function () {
+			  $("#subCat1-4").slideToggle("slow");
+			  $("#subCat2-4").slideToggle("slow");
+			  $("#subCat3-4").slideToggle("slow");
+			  $("#subCat4-4").slideToggle("slow");
+			});
+			</script>
+			<div id="subCat1-4"><div id="subCatsBg"><a href="404.html">0 - 25%</a></div></div>
+			<div id="subCat2-4"><div id="subCatsBg"><a href="404.html">26% - 50%</a></div></div>
+			<div id="subCat3-4"><div id="subCatsBg"><a href="404.html">51% - 75%</a></div></div>
+			<div id="subCat4-4"><div id="subCatsBg"><a href="404.html">76% - 99%</a></div></div>
+		</div>
+	</body>
+</html>
