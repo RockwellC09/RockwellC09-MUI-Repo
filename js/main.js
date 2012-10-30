@@ -7,7 +7,7 @@
 window.addEventListener("DOMContentLoaded", function(){
     
     // getElementBy Id function
-    function ge(x) {
+    function $get(x) {
         
         var element = document.getElementById(x);
         return element;
@@ -17,7 +17,7 @@ window.addEventListener("DOMContentLoaded", function(){
     function makeSel(){
         
         var formsTag = document.getElementsByTagName("form"),
-        getLabel = ge('times'),
+        getLabel = $get('times'),
         makeSelect = document.createElement('select');
         makeSelect.setAttribute("id", "time");
 
@@ -41,7 +41,7 @@ window.addEventListener("DOMContentLoaded", function(){
     makeSel();
     var priorityValue;
     var isFirefox = testCSS('MozBoxSizing');
-    var errorMsg = ge('errors');
+    var errorMsg = ('errors');
     
     //setting up an input button to display the current range position.
     var element = document.createElement("input");
@@ -77,17 +77,17 @@ window.addEventListener("DOMContentLoaded", function(){
     function toggleControls(n){
         switch (n){
             case "on":
-                ge('add-item').style.display = "none";
-                ge('clearLink').style.display = "inline";
-                ge('displayLink').style.display = "none";
-                ge('addNew').style.display = "inline";
+                $get('add-item').style.display = "none";
+                $get('clearLink').style.display = "inline";
+                $get('displayLink').style.display = "none";
+                $get('addNew').style.display = "inline";
                 break;
             case "off":
-                ge('add-item').style.display = "block";
-                ge('clearLink').style.display = "inline";
-                ge('displayLink').style.display = "inline";
-                ge('addNew').style.display = "none";
-                ge('items').style.display = "none";
+                $get('add-item').style.display = "block";
+                $get('clearLink').style.display = "inline";
+                $get('displayLink').style.display = "inline";
+                $get('addNew').style.display = "none";
+                $get('items').style.display = "none";
                 break;
             default:
                 return false;
@@ -108,15 +108,15 @@ window.addEventListener("DOMContentLoaded", function(){
         //Object properties contain array with the form label and input values
         getSelectedRadio();
         var item = {}
-            item.name = ["Item Name:", ge('item-name').value];
-            item.brand = ["Item Brand:", ge('item-brand').value];
-            item.quantity = ["Quantity:", ge('quantity').value];
-            item.cost = ["Total Cost:", ge('total-cost').value];
-            item.date = ["Pledge Date:", ge('pledge').value];
+            item.name = ["Item Name:", $get('item-name').value];
+            item.brand = ["Item Brand:", $get('item-brand').value];
+            item.quantity = ["Quantity:", $get('quantity').value];
+            item.cost = ["Total Cost:", $get('total-cost').value];
+            item.date = ["Pledge Date:", $get('pledge').value];
             item.priority = ["Priority:", priorityValue];
-            item.timeFrame = ["Time Frame:", ge('time').value];
-            item.amountSaved = ["Amount Saved:", ge('amount').value];
-            item.motivation = ["Motivation:", ge('motivation').value];
+            item.timeFrame = ["Time Frame:", $get('time').value];
+            item.amountSaved = ["Amount Saved:", $get('amount').value];
+            item.motivation = ["Motivation:", $get('motivation').value];
             item.space = ["<br>", "<br>"];
             
         //save data into local storage: Using Stringify to convert our object into a string
@@ -139,7 +139,7 @@ window.addEventListener("DOMContentLoaded", function(){
         var makeList = document.createElement('ul');
         makeDiv.appendChild(makeList);
         document.body.appendChild(makeDiv);
-        ge('items').style.display = "block";
+        $get('items').style.display = "block";
         for(var i=0,j=localStorage.length;i<j;i++){
             var makeLi = document.createElement('li');
             var linksLi = document.createElement('li');
@@ -232,15 +232,15 @@ window.addEventListener("DOMContentLoaded", function(){
         title.innerHTML = "<h1>Edit Item</h1>";
         toggleControls("off");
     
-        ge('item-name').value = item.name[1];
-        ge('item-brand').value = item.brand[1];
+        $get('item-name').value = item.name[1];
+        $get('item-brand').value = item.brand[1];
         //set range slider display's value
         if (isFirefox === false){
-            ge('textInput').value = item.quantity[1];
+            $get('textInput').value = item.quantity[1];
         }
-        ge('quantity').value = item.quantity[1];
-        ge('total-cost').value = item.cost[1];
-        ge('pledge').value = item.date[1];
+        $get('quantity').value = item.quantity[1];
+        $get('total-cost').value = item.cost[1];
+        $get('pledge').value = item.date[1];
         var radios = document.forms[0].priority;
         for (var i = 0; i < radios.length; i++){
             if (radios[i].value == "Low!" && item.priority[1] == "Low!") {
@@ -251,16 +251,16 @@ window.addEventListener("DOMContentLoaded", function(){
                 radios[i].setAttribute("checked", "checked");
             }
         }
-        ge('time').value = item.timeFrame[1];
-        ge('amount').value = item.amountSaved[1];
-        ge('motivation').value = item.motivation[1];
+        $get('time').value = item.timeFrame[1];
+        $get('amount').value = item.amountSaved[1];
+        $get('motivation').value = item.motivation[1];
         
         //remove event listener from submit button
         save.removeEventListener("click", saveData);
         
         //change the submit value to edit button
-        ge('submit').value = "Edit Item";
-        var editSubmit = ge('submit');
+        $get('submit').value = "Edit Item";
+        var editSubmit = $get('submit');
         //save the property estabished in this function as a property of the editSubmit event
         //so we can use that value when we save the data to be edited
         editSubmit.addEventListener("click", validate);
@@ -279,10 +279,10 @@ window.addEventListener("DOMContentLoaded", function(){
     }
     
     function validate(e) {
-        var getItemName = ge('item-name');
-        var getCost = ge('total-cost');
-        var getTime = ge('time');
-        var getAmount = ge('amount');
+        var getItemName = $get('item-name');
+        var getCost = $get('total-cost');
+        var getTime = $get('time');
+        var getAmount = $get('amount');
         
         //reset error messages
         errorMsg.innerHTML = "";
@@ -352,31 +352,31 @@ window.addEventListener("DOMContentLoaded", function(){
         }
     }
     
-    //add slide function to the index.html browse section
+        //add slide function to the index.html browse section
     $("#cat1").click(function () {
-			  $("#subCat1").slideToggle("slow");
-			  $("#subCat2").slideToggle("slow");
-			  $("#subCat3").slideToggle("slow");
+			  $get("#subCat1").slideToggle("slow");
+			  $get("#subCat2").slideToggle("slow");
+			  $get("#subCat3").slideToggle("slow");
 			});
     
     $("#cat2").click(function () {
-			  $("#subCat1-2").slideToggle("slow");
-			  $("#subCat2-2").slideToggle("slow");
-			  $("#subCat3-2").slideToggle("slow");
+			  $get("#subCat1-2").slideToggle("slow");
+			  $get("#subCat2-2").slideToggle("slow");
+			  $get("#subCat3-2").slideToggle("slow");
 			});
     
     $("#cat3").click(function () {
-			  $("#subCat1-3").slideToggle("slow");
-			  $("#subCat2-3").slideToggle("slow");
-			  $("#subCat3-3").slideToggle("slow");
-			  $("#subCat4-3").slideToggle("slow");
+			  $get("#subCat1-3").slideToggle("slow");
+			  $get("#subCat2-3").slideToggle("slow");
+			  $get("#subCat3-3").slideToggle("slow");
+			  $get("#subCat4-3").slideToggle("slow");
 			});
     
     $("#cat4").click(function () {
-			  $("#subCat1-4").slideToggle("slow");
-			  $("#subCat2-4").slideToggle("slow");
-			  $("#subCat3-4").slideToggle("slow");
-			  $("#subCat4-4").slideToggle("slow");
+			  $get("#subCat1-4").slideToggle("slow");
+			  $get("#subCat2-4").slideToggle("slow");
+			  $get("#subCat3-4").slideToggle("slow");
+			  $get("#subCat4-4").slideToggle("slow");
 			});
     
     //function home() {
@@ -386,15 +386,15 @@ window.addEventListener("DOMContentLoaded", function(){
     //}
     
     // set link and click events
-    var displayLink = ge('displayLink');
+    var displayLink = $get('displayLink');
     displayLink.addEventListener("click", getData);
-    var clearLink = ge('clearLink');
+    var clearLink = $get('clearLink');
     clearLink.addEventListener("click", clearData);
-    var save = ge('submit');
+    var save = $get('submit');
     save.addEventListener("click", validate);
-    //var add = ge('add');
+    //var add = $get('add');
     //add.addEventListener("click", home);
-    //var add2 = ge('add2');
+    //var add2 = $get('add2');
     //add2.addEventListener("click", home);
 });
 
