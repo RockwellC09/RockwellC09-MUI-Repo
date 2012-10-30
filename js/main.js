@@ -352,6 +352,33 @@ window.addEventListener("DOMContentLoaded", function(){
         }
     }
     
+    //add slide function to the index.html browse section
+    $("#cat1").click(function () {
+			  $("#subCat1").slideToggle("slow");
+			  $("#subCat2").slideToggle("slow");
+			  $("#subCat3").slideToggle("slow");
+			});
+    
+    $("#cat2").click(function () {
+			  $("#subCat1-2").slideToggle("slow");
+			  $("#subCat2-2").slideToggle("slow");
+			  $("#subCat3-2").slideToggle("slow");
+			});
+    
+    $("#cat3").click(function () {
+			  $("#subCat1-3").slideToggle("slow");
+			  $("#subCat2-3").slideToggle("slow");
+			  $("#subCat3-3").slideToggle("slow");
+			  $("#subCat4-3").slideToggle("slow");
+			});
+    
+    $("#cat4").click(function () {
+			  $("#subCat1-4").slideToggle("slow");
+			  $("#subCat2-4").slideToggle("slow");
+			  $("#subCat3-4").slideToggle("slow");
+			  $("#subCat4-4").slideToggle("slow");
+			});
+    
     //function home() {
     //    var url = document.URL;
     //    var homeLink = url.replace("additem.html", "index.html");
