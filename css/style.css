@@ -131,7 +131,7 @@ textarea:focus {
     outline-color: white;
 }
 
-.submit     {
+submit     {
     height:35px;
     font-size: 20px;
     color: white;
@@ -141,6 +141,10 @@ textarea:focus {
     margin-right: 5px;
     border-color: #0d726f;
     background: #292929;
+}
+
+#add-item #submit {
+    height: 35px;
 }
 
 select  {

@@ -1,5 +1,5 @@
 //Christopher Rockwell
-//Project 1
+//Project 2
 //MiU 1211
 
 
@@ -7,7 +7,7 @@
 window.addEventListener("DOMContentLoaded", function(){
     
     // getElementBy Id function
-    function $(x) {
+    function ge(x) {
         
         var element = document.getElementById(x);
         return element;
@@ -17,7 +17,7 @@ window.addEventListener("DOMContentLoaded", function(){
     function makeSel(){
         
         var formsTag = document.getElementsByTagName("form"),
-        getLabel = $('times'),
+        getLabel = ge('times'),
         makeSelect = document.createElement('select');
         makeSelect.setAttribute("id", "time");
 
@@ -41,7 +41,7 @@ window.addEventListener("DOMContentLoaded", function(){
     makeSel();
     var priorityValue;
     var isFirefox = testCSS('MozBoxSizing');
-    var errorMsg = $('errors');
+    var errorMsg = ge('errors');
     
     //setting up an input button to display the current range position.
     var element = document.createElement("input");
@@ -77,17 +77,17 @@ window.addEventListener("DOMContentLoaded", function(){
     function toggleControls(n){
         switch (n){
             case "on":
-                $('add-item').style.display = "none";
-                $('clearLink').style.display = "inline";
-                $('displayLink').style.display = "none";
-                $('addNew').style.display = "inline";
+                ge('add-item').style.display = "none";
+                ge('clearLink').style.display = "inline";
+                ge('displayLink').style.display = "none";
+                ge('addNew').style.display = "inline";
                 break;
             case "off":
-                $('add-item').style.display = "block";
-                $('clearLink').style.display = "inline";
-                $('displayLink').style.display = "inline";
-                $('addNew').style.display = "none";
-                $('items').style.display = "none";
+                ge('add-item').style.display = "block";
+                ge('clearLink').style.display = "inline";
+                ge('displayLink').style.display = "inline";
+                ge('addNew').style.display = "none";
+                ge('items').style.display = "none";
                 break;
             default:
                 return false;
@@ -108,15 +108,15 @@ window.addEventListener("DOMContentLoaded", function(){
         //Object properties contain array with the form label and input values
         getSelectedRadio();
         var item = {}
-            item.name = ["Item Name:", $('item-name').value];
-            item.brand = ["Item Brand:", $('item-brand').value];
-            item.quantity = ["Quantity:", $('quantity').value];
-            item.cost = ["Total Cost:", $('total-cost').value];
-            item.date = ["Pledge Date:", $('pledge').value];
+            item.name = ["Item Name:", ge('item-name').value];
+            item.brand = ["Item Brand:", ge('item-brand').value];
+            item.quantity = ["Quantity:", ge('quantity').value];
+            item.cost = ["Total Cost:", ge('total-cost').value];
+            item.date = ["Pledge Date:", ge('pledge').value];
             item.priority = ["Priority:", priorityValue];
-            item.timeFrame = ["Time Frame:", $('time').value];
-            item.amountSaved = ["Amount Saved:", $('amount').value];
-            item.motivation = ["Motivation:", $('motivation').value];
+            item.timeFrame = ["Time Frame:", ge('time').value];
+            item.amountSaved = ["Amount Saved:", ge('amount').value];
+            item.motivation = ["Motivation:", ge('motivation').value];
             item.space = ["<br>", "<br>"];
             
         //save data into local storage: Using Stringify to convert our object into a string
@@ -139,7 +139,7 @@ window.addEventListener("DOMContentLoaded", function(){
         var makeList = document.createElement('ul');
         makeDiv.appendChild(makeList);
         document.body.appendChild(makeDiv);
-        $('items').style.display = "block";
+        ge('items').style.display = "block";
         for(var i=0,j=localStorage.length;i<j;i++){
             var makeLi = document.createElement('li');
             var linksLi = document.createElement('li');
@@ -232,15 +232,15 @@ window.addEventListener("DOMContentLoaded", function(){
         title.innerHTML = "<h1>Edit Item</h1>";
         toggleControls("off");
     
-        $('item-name').value = item.name[1];
-        $('item-brand').value = item.brand[1];
+        ge('item-name').value = item.name[1];
+        ge('item-brand').value = item.brand[1];
         //set range slider display's value
         if (isFirefox === false){
-            $('textInput').value = item.quantity[1];
+            ge('textInput').value = item.quantity[1];
         }
-        $('quantity').value = item.quantity[1];
-        $('total-cost').value = item.cost[1];
-        $('pledge').value = item.date[1];
+        ge('quantity').value = item.quantity[1];
+        ge('total-cost').value = item.cost[1];
+        ge('pledge').value = item.date[1];
         var radios = document.forms[0].priority;
         for (var i = 0; i < radios.length; i++){
             if (radios[i].value == "Low!" && item.priority[1] == "Low!") {
@@ -251,16 +251,16 @@ window.addEventListener("DOMContentLoaded", function(){
                 radios[i].setAttribute("checked", "checked");
             }
         }
-        $('time').value = item.timeFrame[1];
-        $('amount').value = item.amountSaved[1];
-        $('motivation').value = item.motivation[1];
+        ge('time').value = item.timeFrame[1];
+        ge('amount').value = item.amountSaved[1];
+        ge('motivation').value = item.motivation[1];
         
         //remove event listener from submit button
         save.removeEventListener("click", saveData);
         
         //change the submit value to edit button
-        $('submit').value = "Edit Item";
-        var editSubmit = $('submit');
+        ge('submit').value = "Edit Item";
+        var editSubmit = ge('submit');
         //save the property estabished in this function as a property of the editSubmit event
         //so we can use that value when we save the data to be edited
         editSubmit.addEventListener("click", validate);
@@ -279,10 +279,10 @@ window.addEventListener("DOMContentLoaded", function(){
     }
     
     function validate(e) {
-        var getItemName = $('item-name');
-        var getCost = $('total-cost');
-        var getTime = $('time');
-        var getAmount = $('amount');
+        var getItemName = ge('item-name');
+        var getCost = ge('total-cost');
+        var getTime = ge('time');
+        var getAmount = ge('amount');
         
         //reset error messages
         errorMsg.innerHTML = "";
@@ -359,15 +359,15 @@ window.addEventListener("DOMContentLoaded", function(){
     //}
     
     // set link and click events
-    var displayLink = $('displayLink');
+    var displayLink = ge('displayLink');
     displayLink.addEventListener("click", getData);
-    var clearLink = $('clearLink');
+    var clearLink = ge('clearLink');
     clearLink.addEventListener("click", clearData);
-    var save = $('submit');
+    var save = ge('submit');
     save.addEventListener("click", validate);
-    //var add = $('add');
+    //var add = ge('add');
     //add.addEventListener("click", home);
-    //var add2 = $('add2');
+    //var add2 = ge('add2');
     //add2.addEventListener("click", home);
 });
 
