@@ -279,6 +279,10 @@ a   {
     box-shadow: none;
 }
 
+.button {
+    text-align: center;
+}
+
 progress,          /* All HTML5 progress enabled browsers */
 progress[role]     /* polyfill */
 {
