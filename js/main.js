@@ -352,33 +352,6 @@ window.addEventListener("DOMContentLoaded", function(){
         }
     }
     
-        //add slide function to the index.html browse section
-    $("#cat1").click(function () {
-			  $get("#subCat1").slideToggle("slow");
-			  $get("#subCat2").slideToggle("slow");
-			  $get("#subCat3").slideToggle("slow");
-			});
-    
-    $("#cat2").click(function () {
-			  $get("#subCat1-2").slideToggle("slow");
-			  $get("#subCat2-2").slideToggle("slow");
-			  $get("#subCat3-2").slideToggle("slow");
-			});
-    
-    $("#cat3").click(function () {
-			  $get("#subCat1-3").slideToggle("slow");
-			  $get("#subCat2-3").slideToggle("slow");
-			  $get("#subCat3-3").slideToggle("slow");
-			  $get("#subCat4-3").slideToggle("slow");
-			});
-    
-    $("#cat4").click(function () {
-			  $get("#subCat1-4").slideToggle("slow");
-			  $get("#subCat2-4").slideToggle("slow");
-			  $get("#subCat3-4").slideToggle("slow");
-			  $get("#subCat4-4").slideToggle("slow");
-			});
-    
     //function home() {
     //    var url = document.URL;
     //    var homeLink = url.replace("additem.html", "index.html");
