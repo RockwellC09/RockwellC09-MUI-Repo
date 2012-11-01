@@ -34,54 +34,192 @@ MiU 1211
 				<h1>WishList LayAway</h1>
 			</div>
 			
-			<div id="container" data-role="content" >
+			<div data-role="content" >
 				<a href="additem.html" data-ajax="false"><img src="images/feature.png" width="320px" id="head-img"></a>
-				<div style="padding: 0px 5px 2px 5px;" data-role="collapsible" data-collapsed="true" data-theme="a" data-inset="false" >
-					<h3>Browse by Priority</h3>
 					<ul style="padding: 5px;" data-role="listview" data-theme="b" data-filter="true">
-						<li><a href="404.html" data-ajax="false">Low</a></li>
-						<li><a href="404.html" data-ajax="false">Medium</a></li>
-						<li><a href="404.html" data-ajax="false">High</a></li> 
+						<li><a href="#priority" data-transition="slideup">Browse by Priority
+							<span class="ui-li-count">3</span>
+						</a></li>
+						<li><a href="#cost" data-transition="slideup">Browse by Cost
+							<span class="ui-li-count">3</span>
+						</a></li>
+						<li data-theme="a"><a href="#time" data-transition="slideup">Browse by Time Frame
+							<span class="ui-li-count">4</span>
+						</a></li> 
+						<li data-theme="a"><a href="#progress" data-transition="slideup">Browse by Progress
+							<span class="ui-li-count">4</span>
+						</a></li> 
 					</ul>
+			
+				<div data-role="footer" data-position="fixed" data-id="foot">
+					<div data-role="navbar">
+						<ul>
+							<li><a href="#home" data-icon="home" data-iconpos="top"data-theme="b" data-transition="slidedown">Home</a></li>
+							<li><a href="#about" data-icon="info" data-iconpos="top" data-theme="a" data-transition="slidedown">About</a></li>
+							<li><a href="#sugg" data-icon="grid" data-iconpos="top" data-theme="a" data-transition="slidedown">Suggest</a></li>
+							<li><a href="#news" data-icon="info" data-iconpos="top" data-theme="a" data-transition="slidefade">News</a></li>
+						</ul>
+					</div><!-- /navbar -->
 				</div>
-				<div style="padding: 2px 5px 2px 5px;"data-role="collapsible" data-collapsed="true" data-theme="b" data-inset="false" >
-					<h3>Browse by Cost</h3>
-					<ul style="padding: 5px;" data-role="listview" data-theme="a" data-filter="true">
-						<li><a href="404.html" data-ajax="false">Under $500</a></li>
-						<li><a href="404.html" data-ajax="false">$500 - $1000</a></li>
-						<li><a href="404.html" data-ajax="false">Over $1000</a></li>
+			</div>
+		</div>
+		
+		<div data-role="page" id="priority" data-add-back-btn="true">
+			<div data-role="header" data-position="fixed" data-theme="b">
+				<h1>Browse by Priority</h1>
+			</div>
+			
+			<div data-role="content" data-theme="a">
+				<ul data-role="listview" data-filter="true">
+					<li style="padding-left: 1px;"><a href="404.html" data-ajax="false">
+						<img src="images/pri1.jpg" />
+						<h3>Low</h3>
+						<p>Could live without</p>
+					</a></li>
+					<li data-theme="b"><a href="404.html" data-ajax="false">
+						<img src="images/pri2.jpg" />
+						<h3>Medium</h3>
+						<p>Don't want to live without</p>
+					</a></li>
+					<li style="padding-left: 1px;"><a href="404.html" data-ajax="false">
+						<img src="images/pri3.jpg" />
+						<h3>High</h3>
+						<p>Can't live without</p>
+					</a></li>
+				</ul>
+			</div>
+
+			<div data-role="footer" data-position="fixed" data-id="foot">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#home" data-icon="home" data-iconpos="top"data-theme="b" data-transition="slidedown">Home</a></li>
+						<li><a href="#about" data-icon="info" data-iconpos="top" data-theme="a" data-transition="slidedown">About</a></li>
+						<li><a href="#sugg" data-icon="grid" data-iconpos="top" data-theme="a" data-transition="slidedown">Suggest</a></li>
+						<li><a href="#news" data-icon="info" data-iconpos="top" data-theme="a" data-transition="slidefade">News</a></li>
 					</ul>
-				</div>
-				<div style="padding: 2px 5px 2px 5px;"data-role="collapsible" data-collapsed="true" data-theme="a" data-inset="false" >
-					<h3>Browse by Time Frame</h3>
-					<ul style="padding: 5px;" data-role="listview" data-theme="b" data-filter="true">
-						<li><a href="404.html" data-ajax="false">0-6 months</a></li>
-						<li><a href="404.html" data-ajax="false">6 months to a year</a></li>
-						<li><a href="404.html" data-ajax="false">Between 1-3 years</a></li>
-						<li><a href="404.html" data-ajax="false">More than 3 years</a></li>
-					</ul>
-				</div>
-				<div style="padding: 2px 5px 2px 5px;"data-role="collapsible" data-collapsed="true" data-theme="b" data-inset="false" >
-					<h3>Browse by Progress</h3>
-					<ul style="padding: 5px;" data-role="listview" data-theme="a" data-filter="true">
-						<li><a href="404.html" data-ajax="false">0 - 25%</a></li>
-						<li><a href="404.html" data-ajax="false">26% - 50%</a></li>
-						<li><a href="404.html" data-ajax="false">51% - 75%</a></li>
-						<li><a href="404.html" data-ajax="false">76% - 99%</a></li>
-					</ul>
-				</div>
+				</div><!-- /navbar -->
+			</div>
+		</div>
+		
+		<div data-role="page" id="cost" data-add-back-btn="true">
+			<div data-role="header" data-position="fixed" data-theme="b" >
+				<h1>Browse by Cost</h1>
+			</div>
+			
+			<div data-role="content" data-theme="a">
+				<ul data-role="listview" data-filter="true">
+					<li style="padding-left: 1px;"><a href="404.html" data-ajax="false">
+						<img src="images/cost2.png" />
+						<h3>Under $500</h3>
+						<p>Cost less that $500</p>
+					</a></li>
+					<li data-theme="b"><a href="404.html" data-ajax="false">
+						<img src="images/cost1.png" />
+						<h3>$500 - $1000</h3>
+						<p>Cost between $500 and $1000</p>
+					</a></li>
+					<li style="padding-left: 1px;"><a href="404.html" data-ajax="false">
+						<img src="images/cost2.png" />
+						<h3>Over $1000</h3>
+						<p>Cost over $1000</p>
+					</a></li>
+				</ul>
 			</div>
 			
 			<div data-role="footer" data-position="fixed" data-id="foot">
 				<div data-role="navbar">
 					<ul>
-						<li><a href="#home" data-icon="home" data-iconpos="top"data-theme="b">Home</a></li>
-						<li><a href="#about" data-icon="info" data-iconpos="top" data-theme="a">About</a></li>
-						<li><a href="#sugg" data-icon="grid" data-iconpos="top" data-theme="a">Suggestions</a></li>
+						<li><a href="#home" data-icon="home" data-iconpos="top"data-theme="b" data-transition="slidedown">Home</a></li>
+						<li><a href="#about" data-icon="info" data-iconpos="top" data-theme="a" data-transition="slidedown">About</a></li>
+						<li><a href="#sugg" data-icon="grid" data-iconpos="top" data-theme="a" data-transition="slidedown">Suggest</a></li>
+						<li><a href="#news" data-icon="info" data-iconpos="top" data-theme="a" data-transition="slidefade">News</a></li>
 					</ul>
 				</div><!-- /navbar -->
 			</div>
+		</div>
+		
+		<div data-role="page" id="time" data-add-back-btn="true">
+			<div data-role="header" data-position="fixed" data-theme="a" >
+				<h1 style="margin-right: -10px;">Browse by Time Frame</h1>
+			</div>
 			
+			<div data-role="content" data-theme="b">
+				<ul data-role="listview" data-filter="true">
+					<li><a href="404.html" data-ajax="false">
+						<img src="images/time2.png" />
+						<h3>0 - 6 months</h3>
+						<p>Purchase in the next 6 months</p>
+					</a></li>
+					<li data-theme="a" style="padding-left: 1px;"><a href="404.html" data-ajax="false">
+						<img src="images/time1.png" />
+						<h3>6 months to a year</h3>
+						<p>Purchase in 6 months to a year</p>
+					</a></li>
+					<li><a href="404.html" data-ajax="false">
+						<img src="images/time2.png" />
+						<h3>Between 1 - 3 years</h3>
+						<p>Purchase in the next 1 to 3 years</p>
+					</a></li>
+					<li data-theme="a" style="padding-left: 1px;"><a href="404.html" data-ajax="false">
+						<img src="images/time1.png" />
+						<h3>More than 3 years</h3>
+						<p>Purchase in the next 3+ years</p>
+					</a></li>
+				</ul>
+			</div>
+			
+			<div data-role="footer" data-position="fixed" data-id="foot">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#home" data-icon="home" data-iconpos="top"data-theme="b" data-transition="slidedown">Home</a></li>
+						<li><a href="#about" data-icon="info" data-iconpos="top" data-theme="a" data-transition="slidedown">About</a></li>
+						<li><a href="#sugg" data-icon="grid" data-iconpos="top" data-theme="a" data-transition="slidedown">Suggest</a></li>
+						<li><a href="#news" data-icon="info" data-iconpos="top" data-theme="a" data-transition="slidefade">News</a></li>
+					</ul>
+				</div><!-- /navbar -->
+			</div>
+		</div>
+		
+		<div data-role="page" id="progress" data-add-back-btn="true">
+			<div data-role="header" data-position="fixed" data-theme="a" >
+				<h1>Browse by Progress</h1>
+			</div>
+			
+			<div data-role="content" data-theme="b">
+				<ul data-role="listview" data-filter="true">
+					<li><a href="404.html" data-ajax="false">
+						<img src="images/prog.png" />
+						<h3>0 - 25%</h3>
+						<p>Just getting started</p>
+					</a></li>
+					<li data-theme="a" style="padding-left: 1px;"><a href="404.html" data-ajax="false">
+						<img src="images/prog1.png" />
+						<h3>26% - 50%</h3>
+						<p>Making some noise</p>
+					</a></li>
+					<li><a href="404.html" data-ajax="false">
+						<img src="images/prog2.png" />
+						<h3>51% - 75%</h3>
+						<p>You're keeping up the neighbors</p>
+					</a></li>
+					<li data-theme="a" style="padding-left: 1px;"><a href="404.html" data-ajax="false">
+						<img src="images/prog3.png" />
+						<h3>76% - 99%</h3>
+						<p>The last stretch</p>
+					</a></li>
+				</ul>
+			</div>
+			
+			<div data-role="footer" data-position="fixed" data-id="foot">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#home" data-icon="home" data-iconpos="top"data-theme="b" data-transition="slidefade">Home</a></li>
+						<li><a href="#about" data-icon="info" data-iconpos="top" data-theme="a" data-transition="slidefade">About</a></li>
+						<li><a href="#sugg" data-icon="grid" data-iconpos="top" data-theme="a" data-transition="slidefade">Suggest</a></li>
+						<li><a href="#news" data-icon="info" data-iconpos="top" data-theme="a" data-transition="slidefade">News</a></li>
+					</ul>
+				</div><!-- /navbar -->
+			</div>
 		</div>
 		
 		<div data-role="page" id="about">
@@ -91,7 +229,7 @@ MiU 1211
 			<div data-role="content">
 				<div data-role="controlgroup">
 					<a href="http://tinyurl.com/apy82yu" data-ajax="false" data-role="button" data-theme="a">github</a>
-					<a href="index.html" data-ajax="false" data-role="button" data-theme="b">Gold</a>
+					<a href="../gold/index.html" data-ajax="false" data-role="button" data-theme="b">Gold</a>
 					<a href="../bronze/index.html" data-ajax="false" data-role="button" data-theme="a">Bronze</a>
 					
 					<p><img src="images/me.jpg" width="80px" height="80px;"/><br>Hello User, <br><br>My name is Chris Rockwell and I am the creator of WishList LayAway.
@@ -102,9 +240,10 @@ MiU 1211
 			<div data-role="footer" data-position="fixed" data-id="foot">
 				<div data-role="navbar">
 					<ul>
-						<li><a href="#home" data-icon="home" data-iconpos="top" data-theme="a">Home</a></li>
-						<li><a href="#about" data-icon="info" data-iconpos="top" data-theme="b">About</a></li>
-						<li><a href="#sugg" data-icon="grid" data-iconpos="top" data-theme="a">Suggestions</a></li>
+						<li><a href="#home" data-icon="home" data-iconpos="top" data-theme="a" data-transition="slidefade">Home</a></li>
+						<li><a href="#about" data-icon="info" data-iconpos="top" data-theme="b" data-transition="slidefade">About</a></li>
+						<li><a href="#sugg" data-icon="grid" data-iconpos="top" data-theme="a" data-transition="slidefade">Suggest</a></li>
+						<li><a href="#news" data-icon="info" data-iconpos="top" data-theme="a" data-transition="slidefade">News</a></li>					
 					</ul>
 				</div><!-- /navbar -->
 			</div>
@@ -145,13 +284,53 @@ MiU 1211
 			<div data-role="footer" data-position="fixed" data-id="foot">
 				<div data-role="navbar">
 					<ul>
-						<li><a href="#home" data-icon="home" data-iconpos="top" data-theme="a">Home</a></li>
-						<li><a href="#about" data-icon="info" data-iconpos="top" data-theme="a">About</a></li>
-						<li><a href="#sugg" data-icon="grid" data-iconpos="top" data-theme="b">Suggestions</a></li>
+						<li><a href="#home" data-icon="home" data-iconpos="top" data-theme="a" data-transition="slidefade">Home</a></li>
+						<li><a href="#about" data-icon="info" data-iconpos="top" data-theme="a" data-transition="slidefade">About</a></li>
+						<li><a href="#sugg" data-icon="grid" data-iconpos="top" data-theme="b" data-transition="slidefade">Suggest</a></li>
+						<li><a href="#news" data-icon="info" data-iconpos="top" data-theme="a" data-transition="slidefade">News</a></li>					
 					</ul>
 				</div><!-- /navbar -->
 			</div>
+		</div>
 		
+		<div data-role="page" id="news">
+			<div data-role="header" data-position="fixed" data-theme="a">
+				<h1>This months pledges</h1>
+			</div>
+			<div data-role="content">
+				<ul data-role="listview">
+					<li data-role="list-divider" style="text-align: center;"><h3>October 1, 2012 - October 31, 2012</h3></li>
+					<li>October 14<br><p style="font-size: 14px; padding-top:10px;">Item: Halo 4<br>
+						Cost: $60 <br>Amount Saved: $10 <br>Time Frame: 0-6 months</p>
+					</li>
+					<li data-theme="a">October 17<br><p style="font-size: 14px; padding-top:10px;">Item: iPad<br>
+						Cost: $500<br>Amount Saved: $250 <br>Time Frame: 0-6 months</p>
+					</li>
+					<li>October 17<br><p style="font-size: 14px; padding-top:10px;">Item: iMac<br>
+						Cost: $2000<br>Amount Saved: $100 <br>Time Frame: Between 1-3 years</p>
+					</li>
+					<li data-theme="a">October 18<br><p style="font-size: 14px; padding-top:10px;">Item: iPhone<br>
+						Cost: $200<br>Amount Saved: $40 <br>Time Frame: 6 months to a year</p>
+					</li>
+					<li>October 23<br><p style="font-size: 14px; padding-top:10px;">Item: Jacket<br>
+						Cost: $60<br>Amount Saved: $22 <br>Time Frame: 0-6 months</p>
+					</li>
+					<li data-theme="a">October 25<br><p style="font-size: 14px; padding-top:10px;">Item: White Shoes<br>
+						Cost: $110<br>Amount Saved: $15 <br>Time Frame: 6 months to a year</p>
+					</li>
+				</ul>
+				
+				<div data-role="footer" data-position="fixed" data-id="foot">
+					<div data-role="navbar">
+						<ul>
+							<li><a href="#home" data-icon="home" data-iconpos="top" data-theme="a" data-transition="slidefade">Home</a></li>
+							<li><a href="#about" data-icon="info" data-iconpos="top" data-theme="a" data-transition="slidefade">About</a></li>
+							<li><a href="#sugg" data-icon="grid" data-iconpos="top" data-theme="a" data-transition="slidefade">Suggest</a></li>
+							<li><a href="#news" data-icon="info" data-iconpos="top" data-theme="b" data-transition="slidefade">News</a></li>
+						</ul>
+					</div><!-- /navbar -->
+				</div>
+			</div>
 		</div>
 	
 <!--		<header>

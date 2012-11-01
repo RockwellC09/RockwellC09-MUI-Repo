@@ -34,3 +34,11 @@ textarea    {
 #items  {
     margin: 10px;
 }
+
+#cat1, #cat2, #cat3, #cat4 {
+    font-family: GurmukhiMN, AmericanTypewriter;
+}
+
+#cat1Bg, #cat2Bg, #cat3Bg, #cat4Bg {
+    padding-top: 13px;
+}

@@ -6,9 +6,6 @@ body    {
     font-size:18px;
     color: #0d726f;
 }
-
-.ui-progressbar .ui-progressbar-value { background-image: url(images/pbar-ani.gif); }
-
 header  {
     color: #292929;
     background: url(../images/title.png);
@@ -76,15 +73,16 @@ h1      {
 }
 
 #cat1, #cat2, #cat3, #cat4 {
-    background: #292929;
+    background: url(../images/button2.png);
     font-weight: bold;
     font-family: "Arial Black", Gadget, sans-serif;
     font-size: 22px;
-    width: 320px;
+    width: 310px;
     height: 50px;
     text-align: center;
-    margin: 3px auto 0px auto;
+    margin: 5px auto 0px auto;
     color: white;
+    text-shadow: rgba(0,0,0,0.5) -1.5px 0, rgba(0,0,0,0.3) 0 -1px, rgba(255,255,255,0.5) 0 1px, rgba(0,0,0,0.3) -1px -1px;
 }
 
 #cat1Bg, #cat2Bg, #cat3Bg, #cat4Bg {
@@ -95,7 +93,7 @@ h1      {
 #subCat1-3, #subCat2-3, #subCat3-3, #subCat4-3, #subCat1-4, #subCat2-4, #subCat3-4, #subCat4-4
 {
     background: #0d726f;
-    width: 310px;
+    width: 300px;
     height: 50px;
     text-align: center;
     margin:5px auto;
@@ -175,7 +173,6 @@ fieldset    {
 legend  {
     background: #292929;
     color: white;
-    /*opacity: 0.45;*/
     font-size: larger;
     padding: 5px;
 }
@@ -282,6 +279,9 @@ a   {
 .button {
     text-align: center;
 }
+
+.ui-progressbar .ui-progressbar-value { background-image: url(images/pbar-ani.gif); }
+
 
 progress,          /* All HTML5 progress enabled browsers */
 progress[role]     /* polyfill */
