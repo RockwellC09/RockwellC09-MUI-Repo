@@ -54,8 +54,19 @@ $('#additems').on('pageinit', function(){
 	});
 	
 	$("#clearData").click(function() {
-		clearLocal();
-		location.reload();
+		if(localStorage.length === 0){
+            alert("There is no data to clear.");
+        } else {
+            var answer = confirm("Are you sure you want to delete all data?");
+            if (answer){
+                localStorage.clear();
+                alert("All items deleted.");
+                window.location.reload();
+                return false;
+            } else {
+                alert("Your items were not deleted.");
+            }
+        }
 	});
 	//any other code needed for addItem page goes here
 	
