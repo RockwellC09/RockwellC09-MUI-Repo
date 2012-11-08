@@ -180,7 +180,7 @@ var json = {
         "space": ["<br>", "<br>"]
     },
     "item16": {
-        "name": ["Item Name:", "Call of Duty Black Ops 2"],
+        "name": ["Item Name:", "Black Ops 2"],
         "brand": ["Item Brand:", "Activision"],
         "quantity": ["Quantity:", "1"],
         "cost": ["Total Cost:", "$60.00"],
