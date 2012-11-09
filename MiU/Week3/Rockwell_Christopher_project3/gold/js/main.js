@@ -6,9 +6,13 @@
 $('#home').on('pageinit', function(){
 	//code needed for home page goes here
 });	
+
+$('#displayPage').on('pageinit', function(){
+	//code needed for home page goes here
+	getData();
+});	
 		
 $('#additems').on('pageinit', function(){
-
 		var myForm = $('#add');
 		    myForm.validate({
 		    errorPlacement: function(error, element) {
@@ -38,6 +42,7 @@ $('#additems').on('pageinit', function(){
 		var data = myForm.serializeArray();
 			storeData(data);
 		}
+		
 	});
 /*
 	$("#reset").click(function() {
@@ -50,8 +55,13 @@ $('#additems').on('pageinit', function(){
 	            alert("There is no data in local storage so default data was added.");
 	            autofillData();
 	        }
-		getData();
+		$.mobile.changePage( '#displayPage' );
 	});
+	
+	$("#reset").click(function() {
+		window.location.reload();
+	});
+
 	
 	$("#clearData").click(function() {
 		if(localStorage.length === 0){
@@ -68,6 +78,13 @@ $('#additems').on('pageinit', function(){
             }
         }
 	});
+	var now = new Date();
+	if (now.getDate() < 10) {
+		var today = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + 0 + now.getDate();
+	} else {
+		var today = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
+	}
+    $('#pledge').val(today);
 	//any other code needed for addItem page goes here
 	
 });
@@ -90,6 +107,7 @@ var getData = function(){
 		 $("#dis").append($(makeDiv));
 		for(var i=0,j=localStorage.length;i<j;i++){
             var makeLi = document.createElement('li');
+            var linksLi = document.createElement('li');
             makeList.appendChild(makeLi);
             var key = localStorage.key(i);
             var value = localStorage.getItem(key);
@@ -110,13 +128,17 @@ var getData = function(){
                 makeSubListItem.style.color = "white";
                 optSubText = "<strong> " + obj[x][0] +"</strong> "+ "<p style=\"display:inline;\">" + obj[x][1] + "</p>";
                 makeSubListItem.innerHTML = optSubText;
+                makeSubList.appendChild(linksLi);
                 }
+            makeItemLinks(localStorage.key(i), linksLi); //creates our edit and delete button.links for each item in local storage
             }
             $.mobile.changePage( '#displayPage' );
 };
 
 var storeData = function(data){
-	var id=Math.floor((Math.random()*10000000)+1);
+	
+     var id =  Math.floor((Math.random()*10000000)+1);
+	
 	var val =[];
 	$.each(data, function(i, field){
 		val.push(field.value);
@@ -143,14 +165,80 @@ var storeData = function(data){
 
 
 
-var	deleteItem = function (){
-			
+var	deleteItem = function (key){
+	var ask = confirm("Are you sure you want to delete this item?");
+        if (ask){
+            localStorage.removeItem(key);
+            alert("Item deleted");
+            window.location.reload();
+        } else {
+            alert("The item was not deleted");
+        }		
 };
+
+/*
+var editItem = function (){
+	//Grab the data from the item from local storage
+        var value = localStorage.getItem(this.key);
+        var item = JSON.parse(value);
+        var myForm = $('#add');
+        var data = myForm.serializeArray();
+        
+        select(item);
+        
+        var cost = item.cost[1].replace(/\$/g,'');
+        var cost2 = item.amountSaved[1].replace(/\$/g,'');
+        $('#priority2').removeAttr('checked');
+        if (item.priority[1] == "Low!") {
+                $('#priority1').prop('checked', true);
+            } else if (item.priority[1] == "Medium!!") {
+                $('#priority2').prop('checked', true);
+            } else if (item.priority[1] == "High!!!") {
+                $('#priority3').prop('checked', true);
+            }
+        //show form
+        $.mobile.changePage( '#additems' );
+        
+        $('#itemName').val(item.name[1]);
+        $('#itemBrand').val(item.brand[1]);
+        $('#quantity').val(item.quantity[1]); 
+        $('#totalCost').val(cost);
+        $('#pledge').val(item.date[1]);
+        $('#priority2').removeAttr('checked');
+        $('#amount').val(cost2);
+        $('#motivation').val(item.motivation[1]);
+        
+        var key = this.key;
+        $('#submit').setAttribute("id", "sub")
+        
+        $("#sub").click( key ,function() {
+        storeData(data, key);
+	});
+   
+};
+*/
 					
 var clearLocal = function(){
 	localStorage.clear();
 	alert("Data Cleared");
 };
+
+function select(item) {
+	switch(item.timeFrame[1])
+        {
+        case "0-6 months":
+	        	$('#sel1').attr('selected', 'selected');
+	     		break;
+	   case "6 months to a year":
+	     		$('#sel2').attr('selected', 'selected');
+	     		break;
+	   case "Between 1-3 years":
+			$('#sel3').attr('selected', 'selected');
+			break;
+	   default:
+	   		$('#sel4').attr('selected', 'selected');
+	   	}
+}
 
 function getImage(priorityVal, makeSubList) {
         var imageLi = document.createElement('li');
@@ -171,6 +259,37 @@ function getProgress(obj, makeSubList) {
         prog.style.color = "white";
         prog.innerHTML = "<strong>Progress: </strong><progress max="+ getMax +" value="+ getVal +"></progress> " + percentRound + "%"
         makeSubList.appendChild(prog);
+        
+    }
+    
+
+//Make item links
+//create edit and delete links for each item in storage
+function makeItemLinks(key, linksLi) {
+        var deleteLink = document.createElement('input');
+        deleteLink.setAttribute("type", "button");
+        deleteLink.key = key;
+        deleteLink.setAttribute("id", "del");
+        deleteLink.setAttribute("value", "Delete");
+        deleteLink.setAttribute("onclick", "deleteItem(key);");
+        deleteLink.setAttribute("data-theme", "a");
+        deleteLink.setAttribute("style", "width:200px; margin:-40px 0px 15px 20px; display:block;")
+        deleteLink.setAttribute("class", "ui-btn-up-a ui-btn-inner ui-btn-corner-all")
+        linksLi.appendChild(deleteLink);
+        
+        /*
+var editLink = document.createElement('input');
+        editLink.setAttribute("type", "button");
+        editLink.key = key;
+        editLink.setAttribute("id", "edit");
+        editLink.setAttribute("value", "Edit");
+        editLink.setAttribute("onclick", "editItem(key);");
+        editLink.setAttribute("data-theme", "a");
+        editLink.setAttribute("style", "width:200px; margin:10px 0px 15px 20px;")
+        editLink.setAttribute("class", "ui-btn-up-a ui-btn-inner ui-btn-corner-all")
+        linksLi.appendChild(editLink);
+        editLink.addEventListener("click", editItem);
+*/
         
     }
 
