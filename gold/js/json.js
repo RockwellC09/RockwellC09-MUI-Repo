@@ -238,5 +238,29 @@ var json = {
         "amountSaved": ["Amount Saved:", "$30.00"],
         "motivation": ["Motivation:", "So I can dual boot on my Macbook."],
         "space": ["<br>", "<br>"]
+    },
+    "item21": {
+        "name": ["Item Name:", "iPod Touch"],
+        "brand": ["Item Brand:", "Apple"],
+        "quantity": ["Quantity:", "1"],
+        "cost": ["Total Cost:", "$99.99"],
+        "date": ["Pledge Date:", "2012-10-25"],
+        "priority": ["Priority:", "Low!"],
+        "timeFrame": ["Time Frame:", "6 months to a year"],
+        "amountSaved": ["Amount Saved:", "$65.00"],
+        "motivation": ["Motivation:", "So I can dual boot on my Macbook."],
+        "space": ["<br>", "<br>"]
+    },
+    "item22": {
+        "name": ["Item Name:", "iPod Case"],
+        "brand": ["Item Brand:", "Apple"],
+        "quantity": ["Quantity:", "1"],
+        "cost": ["Total Cost:", "$50.00"],
+        "date": ["Pledge Date:", "2012-10-25"],
+        "priority": ["Priority:", "Low!"],
+        "timeFrame": ["Time Frame:", "6 months to a year"],
+        "amountSaved": ["Amount Saved:", "$45.00"],
+        "motivation": ["Motivation:", "So I can dual boot on my Macbook."],
+        "space": ["<br>", "<br>"]
     }
 }

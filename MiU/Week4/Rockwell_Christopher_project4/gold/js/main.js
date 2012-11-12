@@ -4,19 +4,84 @@
 
 
 $('#home').on('pageinit', function(){
-	//code needed for home page goes here
 });	
 
+//display all items page initialize
 $('#displayPage').on('pageinit', function(){
-	//code needed for home page goes here
 	getData();
 });	
 
-$('#prior').on('pageinit', function(){
-	//code needed for home page goes here
+//low priority page initialize
+$('#prior1').on('pageinit', function(){
 	low();
 });	
-		
+
+//medium priority page initialize
+$('#prior2').on('pageinit', function(){
+	medium();
+});	
+
+//high priority page initialize
+$('#prior3').on('pageinit', function(){
+	high();
+});	
+
+//items less than $500 browse page initialize
+$('#cost1').on('pageinit', function(){
+	cost1();
+});	
+
+//items between $500 and $1000 browse page initialize
+$('#cost2').on('pageinit', function(){
+	cost2();
+});	
+
+//items more than $1001 browse page initialize
+$('#cost3').on('pageinit', function(){
+	cost3();
+});	
+
+//items with a time frame 0-6 months page initialize
+$('#time1').on('pageinit', function(){
+	time1();
+});	
+
+//items with a time frame 6 months to a year page initialize
+$('#time2').on('pageinit', function(){
+	time2();
+});
+
+//items with a time frame between 1-3 years page initialize
+$('#time3').on('pageinit', function(){
+	time3();
+});
+
+//items with a time frame more than 3 years page initialize
+$('#time4').on('pageinit', function(){
+	time4();
+});	
+
+//items with a progress between 0-25% page initialize
+$('#prog1').on('pageinit', function(){
+	progress1();
+});	
+
+//items with a progress between 26-50% page initialize
+$('#prog2').on('pageinit', function(){
+	progress2();
+});
+
+//items with a progress between 51-75% page initialize
+$('#prog3').on('pageinit', function(){
+	progress3();
+});
+
+//items with a progress between 76-99% page initialize
+$('#prog4').on('pageinit', function(){
+	progress4();
+});		
+
+//additems page initialize		
 $('#additems').on('pageinit', function(){
 		var myForm = $('#add');
 		    myForm.validate({
@@ -168,25 +233,469 @@ var storeData = function(data){
             
 }; 
 
+//function to get all items with a low priority and write them to the prior page for the browse button
 function low() {
+	var count = 0;
+	for(var i=0,j=localStorage.length;i<j;i++){
+		var key = localStorage.key(i);
+		var value = localStorage.getItem(key);
+		var obj = JSON.parse(value);
+		var getVal = obj.amountSaved[1].replace(/\$/g,'');
+          var getMax = obj.cost[1].replace(/\$/g,'');
+          var percent = (getVal * 100) / getMax;
+          var percentRound = Math.round(percent * 10) / 10;
+		var priorList = document.createElement('li');
+		priorList.setAttribute("class", "ui-li ui-li-static ui-btn-up-c");
+		if (obj.priority[1] == "Low!") {
+			if(count %2 != 0) {
+			priorList.setAttribute("id", "alt");
+			}
+		count++;
+		priorList.innerHTML = "<p style=\"font-size: 16px; padding-top:10px;\" class=\"ui-li-desc\"><h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><div class=\"meter red\" style=\"margin:0px 0px 10px 0px;\"><span style=\"width: " + percentRound + "% \"></span>  <h3 style=\"display:inline; color:white;\">" + percentRound + "%</h3></div>"
+									+ "<strong> " + obj.name[0] +"</strong> " + obj.name[1] + "<br>"
+									+ "<strong> " + obj.brand[0] +"</strong> " + obj.brand[1] + "<br>"
+									+ "<strong> " + obj.quantity[0] +"</strong> " + obj.quantity[1] + "<br>" 
+								     + "<strong> " + obj.cost[0] +"</strong> " + obj.cost[1] + "<br>"
+								     + "<strong> " + obj.date[0] +"</strong> " + obj.date[1] + "<br>" 
+								     + "<strong> " + obj.priority[0] +"</strong> " + obj.priority[1] + "<br>" 
+								     + "<strong> " + obj.timeFrame[0] +"</strong> "+ "" + obj.timeFrame[1] + "<br>"
+								     + "<strong> " + obj.amountSaved[0] +"</strong> " + obj.amountSaved[1] + "<br>" 
+								     + "<strong> " + obj.motivation[0] +"</strong> "+ "" + obj.motivation[1] + "</p>";
+		$("#low").append($(priorList));
+		}
+	}
+
+}
+
+//function to get all items with a medium priority and write them to the prior2 page for the browse button
+function medium() {
+	
 		var count = 0;
 	for(var i=0,j=localStorage.length;i<j;i++){
 		var key = localStorage.key(i);
 		var value = localStorage.getItem(key);
 		var obj = JSON.parse(value);
-		var lowList = document.createElement('li');
-		lowList.setAttribute("class", "ui-li ui-li-static ui-btn-up-c");
-		if (obj.priority[1] == "Low!") {
+		var getVal = obj.amountSaved[1].replace(/\$/g,'');
+          var getMax = obj.cost[1].replace(/\$/g,'');
+          var percent = (getVal * 100) / getMax;
+          var percentRound = Math.round(percent * 10) / 10;
+		var priorList = document.createElement('li');
+		priorList.setAttribute("class", "ui-li ui-li-static ui-btn-up-c");
+		if (obj.priority[1] == "Medium!!") {
 			if(count %2 != 0) {
-			lowList.setAttribute("id", "low");
-		}
+			priorList.setAttribute("id", "alt");
+			}
 		count++;
-		lowList.innerHTML = "<p style=\"font-size: 16px; padding-top:10px;\" class=\"ui-li-desc\"><strong> " + obj.name[0] +"</strong> " + obj.name[1] + "<br>" 
-								     + "<strong> " + obj.cost[0] +"</strong> " + obj.cost[1] + "<br>" 
+		priorList.innerHTML = "<p style=\"font-size: 16px; padding-top:10px;\" class=\"ui-li-desc\"><h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><div class=\"meter red\" style=\"margin:0px 0px 10px 0px;\"><span style=\"width: " + percentRound + "% \"></span>  <h3 style=\"display:inline; color:white;\">" + percentRound + "%</h3></div>"
+									+ "<strong> " + obj.name[0] +"</strong> " + obj.name[1] + "<br>"
+									+ "<strong> " + obj.brand[0] +"</strong> " + obj.brand[1] + "<br>"
+									+ "<strong> " + obj.quantity[0] +"</strong> " + obj.quantity[1] + "<br>" 
+								     + "<strong> " + obj.cost[0] +"</strong> " + obj.cost[1] + "<br>"
+								     + "<strong> " + obj.date[0] +"</strong> " + obj.date[1] + "<br>" 
 								     + "<strong> " + obj.priority[0] +"</strong> " + obj.priority[1] + "<br>" 
+								     + "<strong> " + obj.timeFrame[0] +"</strong> "+ "" + obj.timeFrame[1] + "<br>"
 								     + "<strong> " + obj.amountSaved[0] +"</strong> " + obj.amountSaved[1] + "<br>" 
-								     + "<strong> " + obj.timeFrame[0] +"</strong> "+ "" + obj.timeFrame[1] + "</p>";
-		$("#low").append($(lowList));
+								     + "<strong> " + obj.motivation[0] +"</strong> "+ "" + obj.motivation[1] + "</p>";
+		$("#medium").append($(priorList));
+		}
+	}
+}
+
+//function to get all items with a High priority and write them to the prior3 page for the browse button
+function high() {
+	
+		var count = 0;
+	for(var i=0,j=localStorage.length;i<j;i++){
+		var key = localStorage.key(i);
+		var value = localStorage.getItem(key);
+		var obj = JSON.parse(value);
+		var getVal = obj.amountSaved[1].replace(/\$/g,'');
+          var getMax = obj.cost[1].replace(/\$/g,'');
+          var percent = (getVal * 100) / getMax;
+          var percentRound = Math.round(percent * 10) / 10;
+		var priorList = document.createElement('li');
+		priorList.setAttribute("class", "ui-li ui-li-static ui-btn-up-c");
+		if (obj.priority[1] == "High!!!") {
+			if(count %2 != 0) {
+			priorList.setAttribute("id", "alt");
+			}
+		count++;
+		priorList.innerHTML = "<p style=\"font-size: 16px; padding-top:10px;\" class=\"ui-li-desc\"><h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><div class=\"meter red\" style=\"margin:0px 0px 10px 0px;\"><span style=\"width: " + percentRound + "% \"></span>  <h3 style=\"display:inline; color:white;\">" + percentRound + "%</h3></div>"
+									+ "<strong> " + obj.name[0] +"</strong> " + obj.name[1] + "<br>"
+									+ "<strong> " + obj.brand[0] +"</strong> " + obj.brand[1] + "<br>"
+									+ "<strong> " + obj.quantity[0] +"</strong> " + obj.quantity[1] + "<br>" 
+								     + "<strong> " + obj.cost[0] +"</strong> " + obj.cost[1] + "<br>"
+								     + "<strong> " + obj.date[0] +"</strong> " + obj.date[1] + "<br>" 
+								     + "<strong> " + obj.priority[0] +"</strong> " + obj.priority[1] + "<br>" 
+								     + "<strong> " + obj.timeFrame[0] +"</strong> "+ "" + obj.timeFrame[1] + "<br>"
+								     + "<strong> " + obj.amountSaved[0] +"</strong> " + obj.amountSaved[1] + "<br>" 
+								     + "<strong> " + obj.motivation[0] +"</strong> "+ "" + obj.motivation[1] + "</p>";
+		$("#high").append($(priorList));
+		}
+	}
+}
+
+function cost1() {
+			var count = 0;
+	for(var i=0,j=localStorage.length;i<j;i++){
+		var key = localStorage.key(i);
+		var value = localStorage.getItem(key);
+		var obj = JSON.parse(value);
+		var getVal = obj.amountSaved[1].replace(/\$/g,'');
+          var getMax = obj.cost[1].replace(/\$/g,'');
+          var percent = (getVal * 100) / getMax;
+          var percentRound = Math.round(percent * 10) / 10;
+		var costList = document.createElement('li');
+		costList.setAttribute("class", "ui-li ui-li-static ui-btn-up-c");
+		var getVal = obj.cost[1].replace(/\$/g,'');
+		if (getVal < 500 && getVal > 0) {
+			if(count %2 != 0) {
+			costList.setAttribute("id", "alt");
+			}
+		count++;
+		costList.innerHTML = "<p style=\"font-size: 16px; padding-top:10px;\" class=\"ui-li-desc\"><h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><div class=\"meter red\" style=\"margin:0px 0px 10px 0px;\"><span style=\"width: " + percentRound + "% \"></span>  <h3 style=\"display:inline; color:white;\">" + percentRound + "%</h3></div>"
+									+ "<strong> " + obj.name[0] +"</strong> " + obj.name[1] + "<br>"
+									+ "<strong> " + obj.brand[0] +"</strong> " + obj.brand[1] + "<br>"
+									+ "<strong> " + obj.quantity[0] +"</strong> " + obj.quantity[1] + "<br>" 
+								     + "<strong> " + obj.cost[0] +"</strong> " + obj.cost[1] + "<br>"
+								     + "<strong> " + obj.date[0] +"</strong> " + obj.date[1] + "<br>" 
+								     + "<strong> " + obj.priority[0] +"</strong> " + obj.priority[1] + "<br>" 
+								     + "<strong> " + obj.timeFrame[0] +"</strong> "+ "" + obj.timeFrame[1] + "<br>"
+								     + "<strong> " + obj.amountSaved[0] +"</strong> " + obj.amountSaved[1] + "<br>" 
+								     + "<strong> " + obj.motivation[0] +"</strong> "+ "" + obj.motivation[1] + "</p>";
+		$("#lowCost").append($(costList));
+		}
+	}
+
+}
+
+function cost2() {
+			var count = 0;
+	for(var i=0,j=localStorage.length;i<j;i++){
+		var key = localStorage.key(i);
+		var value = localStorage.getItem(key);
+		var obj = JSON.parse(value);
+		var getVal = obj.amountSaved[1].replace(/\$/g,'');
+          var getMax = obj.cost[1].replace(/\$/g,'');
+          var percent = (getVal * 100) / getMax;
+          var percentRound = Math.round(percent * 10) / 10;
+		var costList = document.createElement('li');
+		costList.setAttribute("class", "ui-li ui-li-static ui-btn-up-c");
+		var getVal = obj.cost[1].replace(/\$/g,'');
+		if (getVal < 1000 && getVal > 501) {
+			if(count %2 != 0) {
+			costList.setAttribute("id", "alt");
+			}
+		count++;
+		costList.innerHTML = "<p style=\"font-size: 16px; padding-top:10px;\" class=\"ui-li-desc\"><h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><div class=\"meter red\" style=\"margin:0px 0px 10px 0px;\"><span style=\"width: " + percentRound + "% \"></span>  <h3 style=\"display:inline; color:white;\">" + percentRound + "%</h3></div>"
+									+ "<strong> " + obj.name[0] +"</strong> " + obj.name[1] + "<br>"
+									+ "<strong> " + obj.brand[0] +"</strong> " + obj.brand[1] + "<br>"
+									+ "<strong> " + obj.quantity[0] +"</strong> " + obj.quantity[1] + "<br>" 
+								     + "<strong> " + obj.cost[0] +"</strong> " + obj.cost[1] + "<br>"
+								     + "<strong> " + obj.date[0] +"</strong> " + obj.date[1] + "<br>" 
+								     + "<strong> " + obj.priority[0] +"</strong> " + obj.priority[1] + "<br>" 
+								     + "<strong> " + obj.timeFrame[0] +"</strong> "+ "" + obj.timeFrame[1] + "<br>"
+								     + "<strong> " + obj.amountSaved[0] +"</strong> " + obj.amountSaved[1] + "<br>" 
+								     + "<strong> " + obj.motivation[0] +"</strong> "+ "" + obj.motivation[1] + "</p>";
+		$("#medCost").append($(costList));
+		}
+	}
+
+}
+
+function cost3() {
+			var count = 0;
+	for(var i=0,j=localStorage.length;i<j;i++){
+		var key = localStorage.key(i);
+		var value = localStorage.getItem(key);
+		var obj = JSON.parse(value);
+		var getVal = obj.amountSaved[1].replace(/\$/g,'');
+          var getMax = obj.cost[1].replace(/\$/g,'');
+          var percent = (getVal * 100) / getMax;
+          var percentRound = Math.round(percent * 10) / 10;
+		var costList = document.createElement('li');
+		costList.setAttribute("class", "ui-li ui-li-static ui-btn-up-c");
+		var getVal = obj.cost[1].replace(/\$/g,'');
+		if (getVal > 1001) {
+			if(count %2 != 0) {
+			costList.setAttribute("id", "alt");
+			}
+		count++;
+		costList.innerHTML = "<p style=\"font-size: 16px; padding-top:10px;\" class=\"ui-li-desc\"><h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><div class=\"meter red\" style=\"margin:0px 0px 10px 0px;\"><span style=\"width: " + percentRound + "% \"></span>  <h3 style=\"display:inline; color:white;\">" + percentRound + "%</h3></div>"
+									+ "<strong> " + obj.name[0] +"</strong> " + obj.name[1] + "<br>"
+									+ "<strong> " + obj.brand[0] +"</strong> " + obj.brand[1] + "<br>"
+									+ "<strong> " + obj.quantity[0] +"</strong> " + obj.quantity[1] + "<br>" 
+								     + "<strong> " + obj.cost[0] +"</strong> " + obj.cost[1] + "<br>"
+								     + "<strong> " + obj.date[0] +"</strong> " + obj.date[1] + "<br>" 
+								     + "<strong> " + obj.priority[0] +"</strong> " + obj.priority[1] + "<br>" 
+								     + "<strong> " + obj.timeFrame[0] +"</strong> "+ "" + obj.timeFrame[1] + "<br>"
+								     + "<strong> " + obj.amountSaved[0] +"</strong> " + obj.amountSaved[1] + "<br>" 
+								     + "<strong> " + obj.motivation[0] +"</strong> "+ "" + obj.motivation[1] + "</p>";
+		$("#highCost").append($(costList));
+		}
+	}
+
+}
+
+function time1() {
+			var count = 0;
+	for(var i=0,j=localStorage.length;i<j;i++){
+		var key = localStorage.key(i);
+		var value = localStorage.getItem(key);
+		var obj = JSON.parse(value);
+		var getVal = obj.amountSaved[1].replace(/\$/g,'');
+          var getMax = obj.cost[1].replace(/\$/g,'');
+          var percent = (getVal * 100) / getMax;
+          var percentRound = Math.round(percent * 10) / 10;
+		var timeList = document.createElement('li');
+		timeList.setAttribute("class", "ui-li ui-li-static ui-btn-up-c");
+		if (obj.timeFrame[1] == "0-6 months") {
+			if(count %2 != 0) {
+			timeList.setAttribute("id", "alt");
+			}
+		count++;
+		timeList.innerHTML = "<p style=\"font-size: 16px; padding-top:10px;\" class=\"ui-li-desc\"><h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><div class=\"meter red\" style=\"margin:0px 0px 10px 0px;\"><span style=\"width: " + percentRound + "% \"></span>  <h3 style=\"display:inline; color:white;\">" + percentRound + "%</h3></div>"
+									+ "<strong> " + obj.name[0] +"</strong> " + obj.name[1] + "<br>"
+									+ "<strong> " + obj.brand[0] +"</strong> " + obj.brand[1] + "<br>"
+									+ "<strong> " + obj.quantity[0] +"</strong> " + obj.quantity[1] + "<br>" 
+								     + "<strong> " + obj.cost[0] +"</strong> " + obj.cost[1] + "<br>"
+								     + "<strong> " + obj.date[0] +"</strong> " + obj.date[1] + "<br>" 
+								     + "<strong> " + obj.priority[0] +"</strong> " + obj.priority[1] + "<br>" 
+								     + "<strong> " + obj.timeFrame[0] +"</strong> "+ "" + obj.timeFrame[1] + "<br>"
+								     + "<strong> " + obj.amountSaved[0] +"</strong> " + obj.amountSaved[1] + "<br>" 
+								     + "<strong> " + obj.motivation[0] +"</strong> "+ "" + obj.motivation[1] + "</p>";
+		$("#lowTime").append($(timeList));
+		}
+	}
+
+}
+
+function time2() {
+			var count = 0;
+	for(var i=0,j=localStorage.length;i<j;i++){
+		var key = localStorage.key(i);
+		var value = localStorage.getItem(key);
+		var obj = JSON.parse(value);
+		var getVal = obj.amountSaved[1].replace(/\$/g,'');
+          var getMax = obj.cost[1].replace(/\$/g,'');
+          var percent = (getVal * 100) / getMax;
+          var percentRound = Math.round(percent * 10) / 10;
+		var timeList = document.createElement('li');
+		timeList.setAttribute("class", "ui-li ui-li-static ui-btn-up-c");
+		if (obj.timeFrame[1] == "6 months to a year") {
+			if(count %2 != 0) {
+			timeList.setAttribute("id", "alt");
+			}
+		count++;
+		timeList.innerHTML = "<p style=\"font-size: 16px; padding-top:10px;\" class=\"ui-li-desc\"><h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><div class=\"meter red\" style=\"margin:0px 0px 10px 0px;\"><span style=\"width: " + percentRound + "% \"></span>  <h3 style=\"display:inline; color:white;\">" + percentRound + "%</h3></div>"
+									+ "<strong> " + obj.name[0] +"</strong> " + obj.name[1] + "<br>"
+									+ "<strong> " + obj.brand[0] +"</strong> " + obj.brand[1] + "<br>"
+									+ "<strong> " + obj.quantity[0] +"</strong> " + obj.quantity[1] + "<br>" 
+								     + "<strong> " + obj.cost[0] +"</strong> " + obj.cost[1] + "<br>"
+								     + "<strong> " + obj.date[0] +"</strong> " + obj.date[1] + "<br>" 
+								     + "<strong> " + obj.priority[0] +"</strong> " + obj.priority[1] + "<br>" 
+								     + "<strong> " + obj.timeFrame[0] +"</strong> "+ "" + obj.timeFrame[1] + "<br>"
+								     + "<strong> " + obj.amountSaved[0] +"</strong> " + obj.amountSaved[1] + "<br>" 
+								     + "<strong> " + obj.motivation[0] +"</strong> "+ "" + obj.motivation[1] + "</p>";
+		$("#medTime").append($(timeList));
+		}
+	}
+
+}
+
+function time3() {
+			var count = 0;
+	for(var i=0,j=localStorage.length;i<j;i++){
+		var key = localStorage.key(i);
+		var value = localStorage.getItem(key);
+		var obj = JSON.parse(value);
+		var getVal = obj.amountSaved[1].replace(/\$/g,'');
+          var getMax = obj.cost[1].replace(/\$/g,'');
+          var percent = (getVal * 100) / getMax;
+          var percentRound = Math.round(percent * 10) / 10;
+		var timeList = document.createElement('li');
+		timeList.setAttribute("class", "ui-li ui-li-static ui-btn-up-c");
+		if (obj.timeFrame[1] == "Between 1-3 years") {
+			if(count %2 != 0) {
+			timeList.setAttribute("id", "alt");
+			}
+		count++;
+		timeList.innerHTML = "<p style=\"font-size: 16px; padding-top:10px;\" class=\"ui-li-desc\"><h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><div class=\"meter red\" style=\"margin:0px 0px 10px 0px;\"><span style=\"width: " + percentRound + "% \"></span>  <h3 style=\"display:inline; color:white;\">" + percentRound + "%</h3></div>"
+									+ "<strong> " + obj.name[0] +"</strong> " + obj.name[1] + "<br>"
+									+ "<strong> " + obj.brand[0] +"</strong> " + obj.brand[1] + "<br>"
+									+ "<strong> " + obj.quantity[0] +"</strong> " + obj.quantity[1] + "<br>" 
+								     + "<strong> " + obj.cost[0] +"</strong> " + obj.cost[1] + "<br>"
+								     + "<strong> " + obj.date[0] +"</strong> " + obj.date[1] + "<br>" 
+								     + "<strong> " + obj.priority[0] +"</strong> " + obj.priority[1] + "<br>" 
+								     + "<strong> " + obj.timeFrame[0] +"</strong> "+ "" + obj.timeFrame[1] + "<br>"
+								     + "<strong> " + obj.amountSaved[0] +"</strong> " + obj.amountSaved[1] + "<br>" 
+								     + "<strong> " + obj.motivation[0] +"</strong> "+ "" + obj.motivation[1] + "</p>";
+		$("#medHighTime").append($(timeList));
+		}
+	}
+
+}
+
+function time4() {
+			var count = 0;
+	for(var i=0,j=localStorage.length;i<j;i++){
+		var key = localStorage.key(i);
+		var value = localStorage.getItem(key);
+		var obj = JSON.parse(value);
+		var getVal = obj.amountSaved[1].replace(/\$/g,'');
+          var getMax = obj.cost[1].replace(/\$/g,'');
+          var percent = (getVal * 100) / getMax;
+          var percentRound = Math.round(percent * 10) / 10;
+		var timeList = document.createElement('li');
+		timeList.setAttribute("class", "ui-li ui-li-static ui-btn-up-c");
+		if (obj.timeFrame[1] == "More than 3 years") {
+			if(count %2 != 0) {
+			timeList.setAttribute("id", "alt");
+			}
+		count++;
+		timeList.innerHTML = "<p style=\"font-size: 16px; padding-top:10px;\" class=\"ui-li-desc\"><h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><div class=\"meter red\" style=\"margin:0px 0px 10px 0px;\"><span style=\"width: " + percentRound + "% \"></span>  <h3 style=\"display:inline; color:white;\">" + percentRound + "%</h3></div>"
+									+ "<strong> " + obj.name[0] +"</strong> " + obj.name[1] + "<br>"
+									+ "<strong> " + obj.brand[0] +"</strong> " + obj.brand[1] + "<br>"
+									+ "<strong> " + obj.quantity[0] +"</strong> " + obj.quantity[1] + "<br>" 
+								     + "<strong> " + obj.cost[0] +"</strong> " + obj.cost[1] + "<br>"
+								     + "<strong> " + obj.date[0] +"</strong> " + obj.date[1] + "<br>" 
+								     + "<strong> " + obj.priority[0] +"</strong> " + obj.priority[1] + "<br>" 
+								     + "<strong> " + obj.timeFrame[0] +"</strong> "+ "" + obj.timeFrame[1] + "<br>"
+								     + "<strong> " + obj.amountSaved[0] +"</strong> " + obj.amountSaved[1] + "<br>" 
+								     + "<strong> " + obj.motivation[0] +"</strong> "+ "" + obj.motivation[1] + "</p>";
+		$("#highTime").append($(timeList));
+		}
+	}
+
+}
+
+function progress1() {
+			var count = 0;
+	for(var i=0,j=localStorage.length;i<j;i++){
+		var key = localStorage.key(i);
+		var value = localStorage.getItem(key);
+		var obj = JSON.parse(value);
+		var getVal = obj.amountSaved[1].replace(/\$/g,'');
+          var getMax = obj.cost[1].replace(/\$/g,'');
+          var percent = (getVal * 100) / getMax;
+          var percentRound = Math.round(percent * 10) / 10;
+		var progList = document.createElement('li');
+		progList.setAttribute("class", "ui-li ui-li-static ui-btn-up-c");
+		if (percentRound > 0 && percentRound < 26) {
+			if(count %2 != 0) {
+			progList.setAttribute("id", "alt");
+			}
+		count++;
+		progList.innerHTML = "<p style=\"font-size: 16px; padding-top:10px;\" class=\"ui-li-desc\"><h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><div class=\"meter red\" style=\"margin:0px 0px 10px 0px;\"><span style=\"width: " + percentRound + "% \"></span>  <h3 style=\"display:inline; color:white;\">" + percentRound + "%</h3></div>"
+									+ "<strong> " + obj.name[0] +"</strong> " + obj.name[1] + "<br>"
+									+ "<strong> " + obj.brand[0] +"</strong> " + obj.brand[1] + "<br>"
+									+ "<strong> " + obj.quantity[0] +"</strong> " + obj.quantity[1] + "<br>" 
+								     + "<strong> " + obj.cost[0] +"</strong> " + obj.cost[1] + "<br>"
+								     + "<strong> " + obj.date[0] +"</strong> " + obj.date[1] + "<br>" 
+								     + "<strong> " + obj.priority[0] +"</strong> " + obj.priority[1] + "<br>" 
+								     + "<strong> " + obj.timeFrame[0] +"</strong> "+ "" + obj.timeFrame[1] + "<br>"
+								     + "<strong> " + obj.amountSaved[0] +"</strong> " + obj.amountSaved[1] + "<br>" 
+								     + "<strong> " + obj.motivation[0] +"</strong> "+ "" + obj.motivation[1] + "</p>";
+		$("#lowProgress").append($(progList));
+		}
+	}
+
+}
+
+function progress2() {
+			var count = 0;
+	for(var i=0,j=localStorage.length;i<j;i++){
+		var key = localStorage.key(i);
+		var value = localStorage.getItem(key);
+		var obj = JSON.parse(value);
+		var getVal = obj.amountSaved[1].replace(/\$/g,'');
+          var getMax = obj.cost[1].replace(/\$/g,'');
+          var percent = (getVal * 100) / getMax;
+          var percentRound = Math.round(percent * 10) / 10;
+		var progList = document.createElement('li');
+		progList.setAttribute("class", "ui-li ui-li-static ui-btn-up-c");
+		if (percentRound > 25 && percentRound < 51) {
+			if(count %2 != 0) {
+			progList.setAttribute("id", "alt");
+			}
+		count++;
+		progList.innerHTML = "<p style=\"font-size: 16px; padding-top:10px;\" class=\"ui-li-desc\"><h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><div class=\"meter red\" style=\"margin:0px 0px 10px 0px;\"><span style=\"width: " + percentRound + "% \"></span>  <h3 style=\"display:inline; color:white;\">" + percentRound + "%</h3></div>"
+									+ "<strong> " + obj.name[0] +"</strong> " + obj.name[1] + "<br>"
+									+ "<strong> " + obj.brand[0] +"</strong> " + obj.brand[1] + "<br>"
+									+ "<strong> " + obj.quantity[0] +"</strong> " + obj.quantity[1] + "<br>" 
+								     + "<strong> " + obj.cost[0] +"</strong> " + obj.cost[1] + "<br>"
+								     + "<strong> " + obj.date[0] +"</strong> " + obj.date[1] + "<br>" 
+								     + "<strong> " + obj.priority[0] +"</strong> " + obj.priority[1] + "<br>" 
+								     + "<strong> " + obj.timeFrame[0] +"</strong> "+ "" + obj.timeFrame[1] + "<br>"
+								     + "<strong> " + obj.amountSaved[0] +"</strong> " + obj.amountSaved[1] + "<br>" 
+								     + "<strong> " + obj.motivation[0] +"</strong> "+ "" + obj.motivation[1] + "</p>";
+		$("#medProgress").append($(progList));
+		}
+	}
+
+}
+
+function progress3() {
+			var count = 0;
+	for(var i=0,j=localStorage.length;i<j;i++){
+		var key = localStorage.key(i);
+		var value = localStorage.getItem(key);
+		var obj = JSON.parse(value);
+		var getVal = obj.amountSaved[1].replace(/\$/g,'');
+          var getMax = obj.cost[1].replace(/\$/g,'');
+          var percent = (getVal * 100) / getMax;
+          var percentRound = Math.round(percent * 10) / 10;
+		var progList = document.createElement('li');
+		progList.setAttribute("class", "ui-li ui-li-static ui-btn-up-c");
+		if (percentRound > 50 && percentRound < 76) {
+			if(count %2 != 0) {
+			progList.setAttribute("id", "alt");
+			}
+		count++;
+		progList.innerHTML = "<p style=\"font-size: 16px; padding-top:10px;\" class=\"ui-li-desc\"><h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><div class=\"meter red\" style=\"margin:0px 0px 10px 0px;\"><span style=\"width: " + percentRound + "% \"></span>  <h3 style=\"display:inline; color:white;\">" + percentRound + "%</h3></div>"
+									+ "<strong> " + obj.name[0] +"</strong> " + obj.name[1] + "<br>"
+									+ "<strong> " + obj.brand[0] +"</strong> " + obj.brand[1] + "<br>"
+									+ "<strong> " + obj.quantity[0] +"</strong> " + obj.quantity[1] + "<br>" 
+								     + "<strong> " + obj.cost[0] +"</strong> " + obj.cost[1] + "<br>"
+								     + "<strong> " + obj.date[0] +"</strong> " + obj.date[1] + "<br>" 
+								     + "<strong> " + obj.priority[0] +"</strong> " + obj.priority[1] + "<br>" 
+								     + "<strong> " + obj.timeFrame[0] +"</strong> "+ "" + obj.timeFrame[1] + "<br>"
+								     + "<strong> " + obj.amountSaved[0] +"</strong> " + obj.amountSaved[1] + "<br>" 
+								     + "<strong> " + obj.motivation[0] +"</strong> "+ "" + obj.motivation[1] + "</p>";
+		$("#medHighProgress").append($(progList));
+		}
+	}
+
+}
+
+function progress4() {
+			var count = 0;
+	for(var i=0,j=localStorage.length;i<j;i++){
+		var key = localStorage.key(i);
+		var value = localStorage.getItem(key);
+		var obj = JSON.parse(value);
+		var getVal = obj.amountSaved[1].replace(/\$/g,'');
+          var getMax = obj.cost[1].replace(/\$/g,'');
+          var percent = (getVal * 100) / getMax;
+          var percentRound = Math.round(percent * 10) / 10;
+		var progList = document.createElement('li');
+		progList.setAttribute("class", "ui-li ui-li-static ui-btn-up-c");
+		if (percentRound > 75 && percentRound < 100) {
+			if(count %2 != 0) {
+			progList.setAttribute("id", "alt");
+			}
+		count++;
+		progList.innerHTML = "<p style=\"font-size: 16px; padding-top:10px;\" class=\"ui-li-desc\"><h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><div class=\"meter red\" style=\"margin:0px 0px 10px 0px;\"><span style=\"width: " + percentRound + "% \"></span>  <h3 style=\"display:inline; color:white;\">" + percentRound + "%</h3></div>"
+									+ "<strong> " + obj.name[0] +"</strong> " + obj.name[1] + "<br>"
+									+ "<strong> " + obj.brand[0] +"</strong> " + obj.brand[1] + "<br>"
+									+ "<strong> " + obj.quantity[0] +"</strong> " + obj.quantity[1] + "<br>" 
+								     + "<strong> " + obj.cost[0] +"</strong> " + obj.cost[1] + "<br>"
+								     + "<strong> " + obj.date[0] +"</strong> " + obj.date[1] + "<br>" 
+								     + "<strong> " + obj.priority[0] +"</strong> " + obj.priority[1] + "<br>" 
+								     + "<strong> " + obj.timeFrame[0] +"</strong> "+ "" + obj.timeFrame[1] + "<br>"
+								     + "<strong> " + obj.amountSaved[0] +"</strong> " + obj.amountSaved[1] + "<br>" 
+								     + "<strong> " + obj.motivation[0] +"</strong> "+ "" + obj.motivation[1] + "</p>";
+		$("#highProgress").append($(progList));
 		}
 	}
 
@@ -272,6 +781,7 @@ function getImage(priorityVal, makeSubList) {
         makeSubList.appendChild(imageLi);
         var newImg = document.createElement('img');
         newImg.setAttribute("id", "ex");
+        newImg.setAttribute("style", "margin-top: -20px;")
          newImg.setAttribute("align", "right");
         var setSrc = newImg.setAttribute("src", "images/" + priorityVal + ".png");
         imageLi.appendChild(newImg);
@@ -284,7 +794,7 @@ function getProgress(obj, makeSubList) {
         var percentRound = Math.round(percent * 10) / 10;
         var prog = document.createElement('li');
         prog.style.color = "white";
-        prog.innerHTML = "<strong>Progress: </strong><progress max="+ getMax +" value="+ getVal +"></progress> " + percentRound + "%"
+        prog.innerHTML = "<h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><div class=\"meter red\" style=\"margin:20px 10px 10px -25px;\"><span style=\"width: " + percentRound + "% \"></span>  <h3 style=\"display:inline; color:white;\">" + percentRound + "%</h3></div>"
         makeSubList.appendChild(prog);
         
     }
@@ -317,6 +827,17 @@ var editLink = document.createElement('input');
         linksLi.appendChild(editLink);
         editLink.addEventListener("click", editItem);
 */
-        
+
     }
+
+        $(function() {
+			$(".meter > span").each(function() {
+				$(this)
+					.data("origWidth", $(this).width())
+					.width(0)
+					.animate({
+						width: $(this).data("origWidth")
+					}, 1200);
+			});
+		});
 
