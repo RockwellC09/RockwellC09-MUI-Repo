@@ -128,6 +128,7 @@ $('#additems').on('pageinit', function(){
 	            autofillData();
 	        }
 		$.mobile.changePage( '#displayPage' );
+		window.location.reload();
 	});
 	$("#submit").click(function() {
 		var data = myForm.serializeArray();
@@ -750,6 +751,7 @@ var editItem = function (){
             } else if (item.priority[1] == "High!!!") {
                 $('#priority3').prop('checked', true);
             }
+            
         //show form
         $.mobile.changePage( '#additems' );
         
@@ -761,6 +763,7 @@ var editItem = function (){
         $('#priority2').removeAttr('checked');
         $('#amount').val(cost2);
         $('#motivation').val(item.motivation[1]);
+        
         
         var key = this.key;
         
@@ -780,7 +783,6 @@ var editItem = function (){
         $('#sub').click( key ,function() {
         var data = myForm.serializeArray();
         storeData(data, key);
-        $.mobile.changePage( '#displayPage' );
         window.location.reload();
         });
 
