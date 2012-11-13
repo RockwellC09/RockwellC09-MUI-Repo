@@ -107,11 +107,13 @@ $('#additems').on('pageinit', function(){
 				}	
 		},
 			invalidHandler: function(form, validator) {
-			},
-			submitHandler: function() {
+			}
+		/*
+	submitHandler: function() {
 		var data = myForm.serializeArray();
 			storeData(data);
 		}
+*/
 		
 	});
 /*
@@ -126,6 +128,12 @@ $('#additems').on('pageinit', function(){
 	            autofillData();
 	        }
 		$.mobile.changePage( '#displayPage' );
+	});
+	$("#submit").click(function() {
+		var data = myForm.serializeArray();
+		storeData(data);
+		window.location.reload();
+		
 	});
 	
 	$("#reset").click(function() {
@@ -205,9 +213,14 @@ var getData = function(){
             $.mobile.changePage( '#displayPage' );
 };
 
-var storeData = function(data){
-	
-     var id =  Math.floor((Math.random()*10000000)+1);
+var storeData = function(data, key){
+	//if there is no key, this means there is a brand new item and we need a new key.
+	//else we'll set the id to the existing key that we're editing so that it will save over the data
+     if (!key) {
+     		var id =  Math.floor((Math.random()*10000000)+1); 
+     } else {
+         	var id = key;
+     }	
 	
 	var val =[];
 	$.each(data, function(i, field){
@@ -228,7 +241,12 @@ var storeData = function(data){
 
             localStorage.setItem(id, JSON.stringify(item));
             
-            alert("Data Saved!");
+            if (!key) {
+            	alert("Data Saved!");
+     		   } else {
+	     		 alert("Data Edited!");
+     		   }
+            
             $('body').scrollTop(0);
             
 }; 
@@ -251,7 +269,7 @@ function low() {
 			priorList.setAttribute("id", "alt");
 			}
 		count++;
-		priorList.innerHTML = "<p style=\"font-size: 16px; padding-top:10px;\" class=\"ui-li-desc\"><h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><div class=\"meter red\" style=\"margin:0px 0px 10px 0px;\"><span style=\"width: " + percentRound + "% \"></span>  <h3 style=\"display:inline; color:white;\">" + percentRound + "%</h3></div>"
+		priorList.innerHTML = "<h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><h4 style=\"text-align: center; margin:0px 0px 0px 0px;\">" + percentRound + "%</h4><div class=\"meter red\" style=\"margin:0px 0px 0px 10px;\"><span style=\"width: " + percentRound + "% \"></span></div>"
 									+ "<strong> " + obj.name[0] +"</strong> " + obj.name[1] + "<br>"
 									+ "<strong> " + obj.brand[0] +"</strong> " + obj.brand[1] + "<br>"
 									+ "<strong> " + obj.quantity[0] +"</strong> " + obj.quantity[1] + "<br>" 
@@ -286,7 +304,7 @@ function medium() {
 			priorList.setAttribute("id", "alt");
 			}
 		count++;
-		priorList.innerHTML = "<p style=\"font-size: 16px; padding-top:10px;\" class=\"ui-li-desc\"><h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><div class=\"meter red\" style=\"margin:0px 0px 10px 0px;\"><span style=\"width: " + percentRound + "% \"></span>  <h3 style=\"display:inline; color:white;\">" + percentRound + "%</h3></div>"
+		priorList.innerHTML = "<h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><h4 style=\"text-align: center; margin:0px 0px 0px 0px;\">" + percentRound + "%</h4><div class=\"meter red\" style=\"margin:0px 0px 0px 10px;\"><span style=\"width: " + percentRound + "% \"></span></div>"
 									+ "<strong> " + obj.name[0] +"</strong> " + obj.name[1] + "<br>"
 									+ "<strong> " + obj.brand[0] +"</strong> " + obj.brand[1] + "<br>"
 									+ "<strong> " + obj.quantity[0] +"</strong> " + obj.quantity[1] + "<br>" 
@@ -320,7 +338,7 @@ function high() {
 			priorList.setAttribute("id", "alt");
 			}
 		count++;
-		priorList.innerHTML = "<p style=\"font-size: 16px; padding-top:10px;\" class=\"ui-li-desc\"><h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><div class=\"meter red\" style=\"margin:0px 0px 10px 0px;\"><span style=\"width: " + percentRound + "% \"></span>  <h3 style=\"display:inline; color:white;\">" + percentRound + "%</h3></div>"
+		priorList.innerHTML = "<h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><h4 style=\"text-align: center; margin:0px 0px 0px 0px;\">" + percentRound + "%</h4><div class=\"meter red\" style=\"margin:0px 0px 0px 10px;\"><span style=\"width: " + percentRound + "% \"></span></div>"
 									+ "<strong> " + obj.name[0] +"</strong> " + obj.name[1] + "<br>"
 									+ "<strong> " + obj.brand[0] +"</strong> " + obj.brand[1] + "<br>"
 									+ "<strong> " + obj.quantity[0] +"</strong> " + obj.quantity[1] + "<br>" 
@@ -353,7 +371,7 @@ function cost1() {
 			costList.setAttribute("id", "alt");
 			}
 		count++;
-		costList.innerHTML = "<p style=\"font-size: 16px; padding-top:10px;\" class=\"ui-li-desc\"><h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><div class=\"meter red\" style=\"margin:0px 0px 10px 0px;\"><span style=\"width: " + percentRound + "% \"></span>  <h3 style=\"display:inline; color:white;\">" + percentRound + "%</h3></div>"
+		costList.innerHTML = "<h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><h4 style=\"text-align: center; margin:0px 0px 0px 0px;\">" + percentRound + "%</h4><div class=\"meter red\" style=\"margin:0px 0px 0px 10px;\"><span style=\"width: " + percentRound + "% \"></span></div>"
 									+ "<strong> " + obj.name[0] +"</strong> " + obj.name[1] + "<br>"
 									+ "<strong> " + obj.brand[0] +"</strong> " + obj.brand[1] + "<br>"
 									+ "<strong> " + obj.quantity[0] +"</strong> " + obj.quantity[1] + "<br>" 
@@ -387,7 +405,7 @@ function cost2() {
 			costList.setAttribute("id", "alt");
 			}
 		count++;
-		costList.innerHTML = "<p style=\"font-size: 16px; padding-top:10px;\" class=\"ui-li-desc\"><h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><div class=\"meter red\" style=\"margin:0px 0px 10px 0px;\"><span style=\"width: " + percentRound + "% \"></span>  <h3 style=\"display:inline; color:white;\">" + percentRound + "%</h3></div>"
+		costList.innerHTML = "<h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><h4 style=\"text-align: center; margin:0px 0px 0px 0px;\">" + percentRound + "%</h4><div class=\"meter red\" style=\"margin:0px 0px 0px 10px;\"><span style=\"width: " + percentRound + "% \"></span></div>"
 									+ "<strong> " + obj.name[0] +"</strong> " + obj.name[1] + "<br>"
 									+ "<strong> " + obj.brand[0] +"</strong> " + obj.brand[1] + "<br>"
 									+ "<strong> " + obj.quantity[0] +"</strong> " + obj.quantity[1] + "<br>" 
@@ -421,7 +439,7 @@ function cost3() {
 			costList.setAttribute("id", "alt");
 			}
 		count++;
-		costList.innerHTML = "<p style=\"font-size: 16px; padding-top:10px;\" class=\"ui-li-desc\"><h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><div class=\"meter red\" style=\"margin:0px 0px 10px 0px;\"><span style=\"width: " + percentRound + "% \"></span>  <h3 style=\"display:inline; color:white;\">" + percentRound + "%</h3></div>"
+		costList.innerHTML = "<h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><h4 style=\"text-align: center; margin:0px 0px 0px 0px;\">" + percentRound + "%</h4><div class=\"meter red\" style=\"margin:0px 0px 0px 10px;\"><span style=\"width: " + percentRound + "% \"></span></div>"
 									+ "<strong> " + obj.name[0] +"</strong> " + obj.name[1] + "<br>"
 									+ "<strong> " + obj.brand[0] +"</strong> " + obj.brand[1] + "<br>"
 									+ "<strong> " + obj.quantity[0] +"</strong> " + obj.quantity[1] + "<br>" 
@@ -454,7 +472,7 @@ function time1() {
 			timeList.setAttribute("id", "alt");
 			}
 		count++;
-		timeList.innerHTML = "<p style=\"font-size: 16px; padding-top:10px;\" class=\"ui-li-desc\"><h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><div class=\"meter red\" style=\"margin:0px 0px 10px 0px;\"><span style=\"width: " + percentRound + "% \"></span>  <h3 style=\"display:inline; color:white;\">" + percentRound + "%</h3></div>"
+		timeList.innerHTML = "<h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><h4 style=\"text-align: center; margin:0px 0px 0px 0px;\">" + percentRound + "%</h4><div class=\"meter red\" style=\"margin:0px 0px 0px 10px;\"><span style=\"width: " + percentRound + "% \"></span></div>"
 									+ "<strong> " + obj.name[0] +"</strong> " + obj.name[1] + "<br>"
 									+ "<strong> " + obj.brand[0] +"</strong> " + obj.brand[1] + "<br>"
 									+ "<strong> " + obj.quantity[0] +"</strong> " + obj.quantity[1] + "<br>" 
@@ -487,7 +505,7 @@ function time2() {
 			timeList.setAttribute("id", "alt");
 			}
 		count++;
-		timeList.innerHTML = "<p style=\"font-size: 16px; padding-top:10px;\" class=\"ui-li-desc\"><h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><div class=\"meter red\" style=\"margin:0px 0px 10px 0px;\"><span style=\"width: " + percentRound + "% \"></span>  <h3 style=\"display:inline; color:white;\">" + percentRound + "%</h3></div>"
+		timeList.innerHTML = "<h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><h4 style=\"text-align: center; margin:0px 0px 0px 0px;\">" + percentRound + "%</h4><div class=\"meter red\" style=\"margin:0px 0px 0px 10px;\"><span style=\"width: " + percentRound + "% \"></span></div>"
 									+ "<strong> " + obj.name[0] +"</strong> " + obj.name[1] + "<br>"
 									+ "<strong> " + obj.brand[0] +"</strong> " + obj.brand[1] + "<br>"
 									+ "<strong> " + obj.quantity[0] +"</strong> " + obj.quantity[1] + "<br>" 
@@ -520,7 +538,7 @@ function time3() {
 			timeList.setAttribute("id", "alt");
 			}
 		count++;
-		timeList.innerHTML = "<p style=\"font-size: 16px; padding-top:10px;\" class=\"ui-li-desc\"><h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><div class=\"meter red\" style=\"margin:0px 0px 10px 0px;\"><span style=\"width: " + percentRound + "% \"></span>  <h3 style=\"display:inline; color:white;\">" + percentRound + "%</h3></div>"
+		timeList.innerHTML = "<h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><h4 style=\"text-align: center; margin:0px 0px 0px 0px;\">" + percentRound + "%</h4><div class=\"meter red\" style=\"margin:0px 0px 0px 10px;\"><span style=\"width: " + percentRound + "% \"></span></div>"
 									+ "<strong> " + obj.name[0] +"</strong> " + obj.name[1] + "<br>"
 									+ "<strong> " + obj.brand[0] +"</strong> " + obj.brand[1] + "<br>"
 									+ "<strong> " + obj.quantity[0] +"</strong> " + obj.quantity[1] + "<br>" 
@@ -553,7 +571,7 @@ function time4() {
 			timeList.setAttribute("id", "alt");
 			}
 		count++;
-		timeList.innerHTML = "<p style=\"font-size: 16px; padding-top:10px;\" class=\"ui-li-desc\"><h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><div class=\"meter red\" style=\"margin:0px 0px 10px 0px;\"><span style=\"width: " + percentRound + "% \"></span>  <h3 style=\"display:inline; color:white;\">" + percentRound + "%</h3></div>"
+		timeList.innerHTML = "<h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><h4 style=\"text-align: center; margin:0px 0px 0px 0px;\">" + percentRound + "%</h4><div class=\"meter red\" style=\"margin:0px 0px 0px 10px;\"><span style=\"width: " + percentRound + "% \"></span></div>"
 									+ "<strong> " + obj.name[0] +"</strong> " + obj.name[1] + "<br>"
 									+ "<strong> " + obj.brand[0] +"</strong> " + obj.brand[1] + "<br>"
 									+ "<strong> " + obj.quantity[0] +"</strong> " + obj.quantity[1] + "<br>" 
@@ -586,7 +604,7 @@ function progress1() {
 			progList.setAttribute("id", "alt");
 			}
 		count++;
-		progList.innerHTML = "<p style=\"font-size: 16px; padding-top:10px;\" class=\"ui-li-desc\"><h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><div class=\"meter red\" style=\"margin:0px 0px 10px 0px;\"><span style=\"width: " + percentRound + "% \"></span>  <h3 style=\"display:inline; color:white;\">" + percentRound + "%</h3></div>"
+		progList.innerHTML = "<h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><h4 style=\"text-align: center; margin:0px 0px 0px 0px;\">" + percentRound + "%</h4><div class=\"meter red\" style=\"margin:0px 0px 0px 10px;\"><span style=\"width: " + percentRound + "% \"></span></div>"
 									+ "<strong> " + obj.name[0] +"</strong> " + obj.name[1] + "<br>"
 									+ "<strong> " + obj.brand[0] +"</strong> " + obj.brand[1] + "<br>"
 									+ "<strong> " + obj.quantity[0] +"</strong> " + obj.quantity[1] + "<br>" 
@@ -619,7 +637,7 @@ function progress2() {
 			progList.setAttribute("id", "alt");
 			}
 		count++;
-		progList.innerHTML = "<p style=\"font-size: 16px; padding-top:10px;\" class=\"ui-li-desc\"><h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><div class=\"meter red\" style=\"margin:0px 0px 10px 0px;\"><span style=\"width: " + percentRound + "% \"></span>  <h3 style=\"display:inline; color:white;\">" + percentRound + "%</h3></div>"
+		progList.innerHTML = "<h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><h4 style=\"text-align: center; margin:0px 0px 0px 0px;\">" + percentRound + "%</h4><div class=\"meter red\" style=\"margin:0px 0px 0px 10px;\"><span style=\"width: " + percentRound + "% \"></span></div>"
 									+ "<strong> " + obj.name[0] +"</strong> " + obj.name[1] + "<br>"
 									+ "<strong> " + obj.brand[0] +"</strong> " + obj.brand[1] + "<br>"
 									+ "<strong> " + obj.quantity[0] +"</strong> " + obj.quantity[1] + "<br>" 
@@ -652,7 +670,7 @@ function progress3() {
 			progList.setAttribute("id", "alt");
 			}
 		count++;
-		progList.innerHTML = "<p style=\"font-size: 16px; padding-top:10px;\" class=\"ui-li-desc\"><h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><div class=\"meter red\" style=\"margin:0px 0px 10px 0px;\"><span style=\"width: " + percentRound + "% \"></span>  <h3 style=\"display:inline; color:white;\">" + percentRound + "%</h3></div>"
+		progList.innerHTML = "<h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><h4 style=\"text-align: center; margin:0px 0px 0px 0px;\">" + percentRound + "%</h4><div class=\"meter red\" style=\"margin:0px 0px 0px 10px;\"><span style=\"width: " + percentRound + "% \"></span></div>"
 									+ "<strong> " + obj.name[0] +"</strong> " + obj.name[1] + "<br>"
 									+ "<strong> " + obj.brand[0] +"</strong> " + obj.brand[1] + "<br>"
 									+ "<strong> " + obj.quantity[0] +"</strong> " + obj.quantity[1] + "<br>" 
@@ -685,7 +703,7 @@ function progress4() {
 			progList.setAttribute("id", "alt");
 			}
 		count++;
-		progList.innerHTML = "<p style=\"font-size: 16px; padding-top:10px;\" class=\"ui-li-desc\"><h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><div class=\"meter red\" style=\"margin:0px 0px 10px 0px;\"><span style=\"width: " + percentRound + "% \"></span>  <h3 style=\"display:inline; color:white;\">" + percentRound + "%</h3></div>"
+		progList.innerHTML = "<h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><h4 style=\"text-align: center; margin:0px 0px 0px 0px;\">" + percentRound + "%</h4><div class=\"meter red\" style=\"margin:0px 0px 0px 10px;\"><span style=\"width: " + percentRound + "% \"></span></div>"
 									+ "<strong> " + obj.name[0] +"</strong> " + obj.name[1] + "<br>"
 									+ "<strong> " + obj.brand[0] +"</strong> " + obj.brand[1] + "<br>"
 									+ "<strong> " + obj.quantity[0] +"</strong> " + obj.quantity[1] + "<br>" 
@@ -712,7 +730,7 @@ var	deleteItem = function (key){
         }		
 };
 
-/*
+
 var editItem = function (){
 	//Grab the data from the item from local storage
         var value = localStorage.getItem(this.key);
@@ -745,14 +763,29 @@ var editItem = function (){
         $('#motivation').val(item.motivation[1]);
         
         var key = this.key;
-        $('#submit').setAttribute("id", "sub")
         
-        $("#sub").click( key ,function() {
+        //$('#submit').hide();
+        $('#submit').closest('.ui-btn').hide();
+        var editButton = $("<button id=\"sub\" data-theme=\"b\">Edit</button>");
+        //editButton.setAttribute("type", "submit");
+        //editButton.setAttribute("id", "sub");
+        //editButton.setAttribute("class", "ui-btn ui-shadow ui-btn-corner-all ui-btn-up-b");
+        //editButton.setAttribute("style", "width:100%; height:35px;");
+        //editButton.setAttribute("value", "Edit")
+        $("#ed").append($(editButton));
+        editButton.button();
+        //$('#sub').attr("onclick", "ed()");
+        
+        
+        $('#sub').click( key ,function() {
+        var data = myForm.serializeArray();
         storeData(data, key);
-	});
+        $.mobile.changePage( '#displayPage' );
+        window.location.reload();
+        });
+
    
 };
-*/
 					
 var clearLocal = function(){
 	localStorage.clear();
@@ -794,7 +827,7 @@ function getProgress(obj, makeSubList) {
         var percentRound = Math.round(percent * 10) / 10;
         var prog = document.createElement('li');
         prog.style.color = "white";
-        prog.innerHTML = "<h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><div class=\"meter red\" style=\"margin:20px 10px 10px -25px;\"><span style=\"width: " + percentRound + "% \"></span>  <h3 style=\"display:inline; color:white;\">" + percentRound + "%</h3></div>"
+        prog.innerHTML = "<h3 style=\"text-align: center; margin:0px 0px 10px 0px;\">Progress</h3><h4 style=\"text-align: center; margin:0px 0px -15px 0px;\">" + percentRound + "%</h4><div class=\"meter red\" style=\"margin:20px 15px 10px -25px;\"><span style=\"width: " + percentRound + "% \"></span></div>"
         makeSubList.appendChild(prog);
         
     }
@@ -803,6 +836,19 @@ function getProgress(obj, makeSubList) {
 //Make item links
 //create edit and delete links for each item in storage
 function makeItemLinks(key, linksLi) {
+
+	   var editLink = document.createElement('input');
+        editLink.setAttribute("type", "button");
+        editLink.key = key;
+        editLink.setAttribute("id", "edit");
+        editLink.setAttribute("value", "Edit");
+        editLink.setAttribute("onclick", "editItem(key);");
+        editLink.setAttribute("data-theme", "a");
+        editLink.setAttribute("style", "width:120px; margin:0px 5px 20px -10px; display:inline;");
+        editLink.setAttribute("class", "ui-btn-up-c ui-btn-inner ui-btn-corner-all");
+        linksLi.appendChild(editLink);
+        editLink.addEventListener("click", editItem);	
+
         var deleteLink = document.createElement('input');
         deleteLink.setAttribute("type", "button");
         deleteLink.key = key;
@@ -810,34 +856,22 @@ function makeItemLinks(key, linksLi) {
         deleteLink.setAttribute("value", "Delete");
         deleteLink.setAttribute("onclick", "deleteItem(key);");
         deleteLink.setAttribute("data-theme", "a");
-        deleteLink.setAttribute("style", "width:200px; margin:-40px 0px 15px 20px; display:block;")
-        deleteLink.setAttribute("class", "ui-btn-up-a ui-btn-inner ui-btn-corner-all")
+        deleteLink.setAttribute("style", "width:120px; margin:0px 0px 20px 5px; display:inline;");
+        deleteLink.setAttribute("class", "ui-btn-up-a ui-btn-inner ui-btn-corner-all");
         linksLi.appendChild(deleteLink);
         
-        /*
-var editLink = document.createElement('input');
-        editLink.setAttribute("type", "button");
-        editLink.key = key;
-        editLink.setAttribute("id", "edit");
-        editLink.setAttribute("value", "Edit");
-        editLink.setAttribute("onclick", "editItem(key);");
-        editLink.setAttribute("data-theme", "a");
-        editLink.setAttribute("style", "width:200px; margin:10px 0px 15px 20px;")
-        editLink.setAttribute("class", "ui-btn-up-a ui-btn-inner ui-btn-corner-all")
-        linksLi.appendChild(editLink);
-        editLink.addEventListener("click", editItem);
-*/
 
-    }
 
-        $(function() {
-			$(".meter > span").each(function() {
-				$(this)
-					.data("origWidth", $(this).width())
-					.width(0)
-					.animate({
-						width: $(this).data("origWidth")
-					}, 1200);
-			});
-		});
+}
+
+$(function() {
+	$(".meter > span").each(function() {
+		$(this)
+			.data("origWidth", $(this).width())
+			.width(0)
+			.animate({
+				width: $(this).data("origWidth")
+			}, 1200);
+	});
+});
 
