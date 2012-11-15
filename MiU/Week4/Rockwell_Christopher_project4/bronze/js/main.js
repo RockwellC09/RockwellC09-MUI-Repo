@@ -133,7 +133,7 @@ window.addEventListener("DOMContentLoaded", function(){
         
         toggleControls("on");
         
-        title.innerHTML = "<a href=\"index.html\"><h1>Your WishList</h1></a>";
+        title.innerHTML = "<a href=\"index.html\"><h1>WishList</h1></a><img src=\"images/icon.png\" style=\"margin-top:-40px; margin-right:10px;\" alt=\"Logo\" align=\"right\">";
         var makeDiv = document.createElement('div');
         makeDiv.setAttribute("id", "items");
         var makeList = document.createElement('ul');

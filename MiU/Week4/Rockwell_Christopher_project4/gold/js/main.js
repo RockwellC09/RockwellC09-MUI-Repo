@@ -137,10 +137,15 @@ $('#additems').on('pageinit', function(){
 		
 	});
 	
+	//reset button click
 	$("#reset").click(function() {
 		window.location.reload();
 	});
-
+	
+	//icon click
+	$("#icon").click(function() {
+		$.mobile.changePage( '#home' );
+	});
 	
 	$("#clearData").click(function() {
 		if(localStorage.length === 0){
